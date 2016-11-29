@@ -35,3 +35,6 @@ C:\Users\YG\Desktop\TP3Etu\TP3\obj\Debug\TP3.Properties.Resources.resources
 C:\Users\YG\Desktop\TP3Etu\TP3\obj\Debug\TP3.csproj.GenerateResource.Cache
 C:\Users\YG\Desktop\TP3Etu\TP3\obj\Debug\TP3.Tetris.resources
 C:\Users\YG\Desktop\TP3Etu\TP3\obj\Debug\TP3.Options.resources
+C:\Users\Yannick\Desktop\Tetris\Tetris\TP3\bin\Debug\TP3.exe.config
+C:\Users\Yannick\Desktop\Tetris\Tetris\TP3\obj\Debug\TP3.exe
+C:\Users\Yannick\Desktop\Tetris\Tetris\TP3\obj\Debug\TP3.pdb

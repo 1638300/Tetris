@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 
-
+//im gay
 namespace TP3
 {
   public partial class Tetris : Form
