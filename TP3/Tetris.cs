@@ -509,7 +509,16 @@ namespace TP3
 
     private void options_Click(object sender, EventArgs e)
     {
-      ShowDialog(options);
+      Options optionsDialog = new Options();
+      optionsDialog.nbColonnesOptions.Value = nbColonnes;
+      optionsDialog.nbLignesOptions.Value = nbLignes;
+      optionsDialog.ShowDialog();
+      if (DialogResult == DialogResult.OK)
+      {
+        nbLignes = (int)optionsDialog.nbLignesOptions.Value;
+        nbColonnes = (int)optionsDialog.nbColonnesOptions.Value;
+        InitializeComponent();
+      }
     }
   }
   enum TypeBloc

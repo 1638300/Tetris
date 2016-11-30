@@ -16,15 +16,16 @@ namespace TP3
     {
       InitializeComponent();
     }
-
-    private void nbColonnes_ValueChanged(object sender, EventArgs e)
+    public int nbColonnesChanger;
+    public int nbLignesChanger;
+    public void nbColonnes_ValueChanged(object sender, EventArgs e)
     {
-
+      nbColonnesChanger = (int)nbColonnesOptions.Value; 
     }
 
-    private void nbLignes_ValueChanged(object sender, EventArgs e)
+    public void nbLignes_ValueChanged(object sender, EventArgs e)
     {
-
+      nbLignesChanger = (int)nbLignesOptions.Value;
     }
   }
 }
