@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Media;
+using System.Diagnostics;
 
 
-//im gay
 namespace TP3
 {
   public partial class Tetris : Form
   {
-    public Tetris( )
+    public Tetris()
     {
-      InitializeComponent( );
+      InitializeComponent();
     }
 
     #region Code fourni
-    
+
     // Représentation visuelles du jeu en mémoire.
     PictureBox[,] toutesImagesVisuelles = null;
     int nbLignes = 20;
@@ -27,6 +28,9 @@ namespace TP3
     TypeBloc[,] tabLogique = new TypeBloc[20, 10];
     TypeBloc bloc;
     Color blocCouleur;
+    SoundPlayer musique = new SoundPlayer();
+    bool effetsSonoresActifs = true;
+    bool musiqueActive = true;
     mouvement deplacement;
     DateTime timer = new DateTime();
     double nbPointsCourant = 0;
@@ -38,11 +42,11 @@ namespace TP3
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void frmLoad( object sender, EventArgs e )
+    private void frmLoad(object sender, EventArgs e)
     {
       // Ne pas oublier de mettre en place les valeurs nécessaires à une partie.
       ExecuterTestsUnitaires();
-      InitialiserSurfaceDeJeu(nbLignes,nbColonnes);
+      InitialiserSurfaceDeJeu(nbLignes, nbColonnes);
       run();
     }
 
@@ -67,7 +71,7 @@ namespace TP3
           newPictureBox.Margin = new Padding(0, 0, 0, 0);
           newPictureBox.BorderStyle = BorderStyle.FixedSingle;
           newPictureBox.Dock = DockStyle.Fill;
-          
+
           // Assignation de la représentation visuelle.
           toutesImagesVisuelles[i, j] = newPictureBox;
           // Ajout dynamique du PictureBox créé dans la grille de mise en forme.
@@ -77,38 +81,39 @@ namespace TP3
       }
     }
     #endregion
-    
+
     void InitialiserTableau()
     {
       for (int i = 0; i < tabLogique.GetLength(0); i++)
       {
         for (int j = 0; j < tabLogique.GetLength(1); j++)
         {
-          tabLogique[i,j] = TypeBloc.None;
+          tabLogique[i, j] = TypeBloc.None;
         }
       }
     }
 
     void run()
     {
+      InitialiserTableau();
       InitialiserPartie();
     }
     void InitialiserPartie()
     {
       GererLigneComplete();
-      colonneCourante = tabLogique.GetLength(1) / 2 -1;
+      colonneCourante = tabLogique.GetLength(1) / 2 - 1;
       ligneCourante = 0;
       GererTypeBlocs();
       GererCreationBlocDansJeu();
       timer = DateTime.Now;
       descenteBloc.Enabled = true;
-            int ay;
+      int ay;
     }
     void MettreAJourPositionBlocDansTabLogique()
     {
       for (int i = 0; i < positionXRelative.Length; i++)
       {
-        tabLogique[ligneCourante + positionYRelative[i], colonneCourante + positionXRelative[i]] = bloc;  
+        tabLogique[ligneCourante + positionYRelative[i], colonneCourante + positionXRelative[i]] = bloc;
       }
     }
     void DetruireBlocCourant()
@@ -129,7 +134,7 @@ namespace TP3
     {
       for (int i = 0; i < positionXRelative.Length; i++)
       {
-        toutesImagesVisuelles[ligneCourante + positionYRelative[i], colonneCourante + positionXRelative[i]].BackColor = blocCouleur; 
+        toutesImagesVisuelles[ligneCourante + positionYRelative[i], colonneCourante + positionXRelative[i]].BackColor = blocCouleur;
       }
     }
     void GererCouleurBloc()
@@ -144,23 +149,23 @@ namespace TP3
       {
         blocCouleur = Color.Turquoise;
       }
-      else if(bloc == TypeBloc.T)
+      else if (bloc == TypeBloc.T)
       {
         blocCouleur = Color.Purple;
       }
-      else if(bloc == TypeBloc.L)
+      else if (bloc == TypeBloc.L)
       {
         blocCouleur = Color.Orange;
       }
-      else if(bloc == TypeBloc.J)
+      else if (bloc == TypeBloc.J)
       {
         blocCouleur = Color.Blue;
       }
-      else if(bloc == TypeBloc.S)
+      else if (bloc == TypeBloc.S)
       {
         blocCouleur = Color.Green;
       }
-      else if(bloc == TypeBloc.Z)
+      else if (bloc == TypeBloc.Z)
       {
         blocCouleur = Color.Red;
       }
@@ -254,25 +259,25 @@ namespace TP3
     }
     void GererDeplacement()
     {
-      if(deplacement == mouvement.Droite)
+      if (deplacement == mouvement.Droite)
       {
         DetruireBlocCourant();
         MettreAJourAffichageCourant();
         colonneCourante++;
       }
-      else if(deplacement == mouvement.Gauche)
+      else if (deplacement == mouvement.Gauche)
       {
         DetruireBlocCourant();
         MettreAJourAffichageCourant();
         colonneCourante--;
       }
-      else if(deplacement == mouvement.Bas)
+      else if (deplacement == mouvement.Bas)
       {
         DetruireBlocCourant();
         MettreAJourAffichageCourant();
         ligneCourante++;
       }
-      else if(deplacement == mouvement.RotationAntihoraire)
+      else if (deplacement == mouvement.RotationAntihoraire)
       {
         DetruireBlocCourant();
         MettreAJourAffichageCourant();
@@ -321,7 +326,7 @@ namespace TP3
       {
         for (int i = 0; i < positionXRelative.Length; i++)
         {
-          if (colonneCourante + 1 + positionXRelative[i] > tabLogique.GetLength(1)-1)
+          if (colonneCourante + 1 + positionXRelative[i] > tabLogique.GetLength(1) - 1)
           {
             peutBouger = false;
           }
@@ -339,7 +344,7 @@ namespace TP3
           {
             peutBouger = false;
           }
-          else if (tabLogique[ligneCourante +1 + positionYRelative[i], colonneCourante + positionXRelative[i]] == TypeBloc.Gele)
+          else if (tabLogique[ligneCourante + 1 + positionYRelative[i], colonneCourante + positionXRelative[i]] == TypeBloc.Gele)
           {
             peutBouger = false;
           }
@@ -349,7 +354,7 @@ namespace TP3
       {
         for (int i = 0; i < positionXRelative.Length; i++)
         {
-          if (colonneCourante  + positionYRelative[i] > tabLogique.GetLength(1) - 1 || colonneCourante + positionYRelative[i] < 0 || ligneCourante - positionXRelative[i] > tabLogique.GetLength(0) - 1 || ligneCourante - positionXRelative[i] < 0)
+          if (colonneCourante + positionYRelative[i] > tabLogique.GetLength(1) - 1 || colonneCourante + positionYRelative[i] < 0 || ligneCourante - positionXRelative[i] > tabLogique.GetLength(0) - 1 || ligneCourante - positionXRelative[i] < 0)
           {
             peutBouger = false;
           }
@@ -375,32 +380,58 @@ namespace TP3
       }
       return peutBouger;
     }
-    void DetruireLigneComplete(int positionLigne)
+    void DetruireLigneCompleteLogique(int positionLigne)
     {
       for (int j = 0; j < tabLogique.GetLength(1); j++)
       {
         tabLogique[positionLigne, j] = TypeBloc.None;
+      }
+    }
+    void DetruireLigneCompleteAffichage(int positionLigne)
+    {
+      for (int j = 0; j < tabLogique.GetLength(1); j++)
+      {
         toutesImagesVisuelles[positionLigne, j].BackColor = Color.Black;
       }
-
     }
-    void DecalerLigne(int positionLigne)
+    void DecalerLigneLogique(int positionLigne)
     {
-      for (int i = positionLigne; i > 1; i--)
+      for (int i = positionLigne; i > 0; i--)
       {
         for (int j = 0; j < tabLogique.GetLength(1); j++)
         {
           tabLogique[i, j] = tabLogique[i - 1, j];
-          toutesImagesVisuelles[i, j].BackColor = toutesImagesVisuelles[i - 1, j].BackColor;
         }
       }
       for (int j = 0; j < tabLogique.GetLength(1); j++)
       {
         tabLogique[0, j] = TypeBloc.None;
+      }
+    }
+    void DecalerLigneAffichage(int positionLigne)
+    {
+      for (int i = positionLigne; i > 0; i--)
+      {
+        for (int j = 0; j < tabLogique.GetLength(1); j++)
+        {
+          toutesImagesVisuelles[i, j].BackColor = toutesImagesVisuelles[i - 1, j].BackColor;
+        }
+      }
+      for (int j = 0; j < tabLogique.GetLength(1); j++)
+      {
         toutesImagesVisuelles[0, j].BackColor = Color.Black;
       }
     }
     void GererLigneComplete()
+    {
+      GererLigneCompleteAffichage();
+      int nbLigneDetruite = GererLigneCompleteLogique();
+      if (nbLigneDetruite > 0)
+      {
+        GererPointage(nbLigneDetruite);
+      }
+    }
+    int GererLigneCompleteLogique()
     {
       int nbLigneDetruite = 0;
       bool ligneComplete = true;
@@ -416,14 +447,31 @@ namespace TP3
         }
         if (ligneComplete)
         {
-          DetruireLigneComplete(i);
-          DecalerLigne(i);
+          DetruireLigneCompleteLogique(i);
+          DecalerLigneLogique(i);
           nbLigneDetruite++;
         }
       }
-      if (nbLigneDetruite > 0)
+      return nbLigneDetruite;
+    }
+    void GererLigneCompleteAffichage()
+    {
+      bool ligneComplete = true;
+      for (int i = 0; i < tabLogique.GetLength(0); i++)
       {
-        GererPointage(nbLigneDetruite);
+        ligneComplete = true;
+        for (int j = 0; j < tabLogique.GetLength(1); j++)
+        {
+          if (tabLogique[i, j] != TypeBloc.Gele)
+          {
+            ligneComplete = false;
+          }
+        }
+        if (ligneComplete)
+        {
+          DetruireLigneCompleteAffichage(i);
+          DecalerLigneAffichage(i);
+        }
       }
     }
     void GererPointage(int nbLigneDetruite)
@@ -431,30 +479,155 @@ namespace TP3
       nbPointsCourant += Math.Pow(5, nbLigneDetruite);
       nbPoints.Text = nbPointsCourant + "points";
     }
-    public void ChangerNbColonne(int nbColonneChoisi)
+    #region Code à développer
+    /// <summary>
+    /// Faites ici les appels requis pour vos tests unitaires.
+    /// </summary>
+    void ExecuterTestsUnitaires()
     {
-
-    }
-      #region Code à développer
-      /// <summary>
-      /// Faites ici les appels requis pour vos tests unitaires.
-      /// </summary>
-      void ExecuterTestsUnitaires()
-    {      
-      ExecuterTestABC();
+      ExecuterTestRetraitLigneSeul();
+      ExecuterTestRetraitLigneSeulEtDecalage();
+      ExecuterTestRetrait2LignesConsecutives();
+      ExecuterTestRetrait2LignesNonConsecutives();
+      ExecuterTestRetrait3Lignes();
+      ExecuterTestRetrait4Lignes();
       // A compléter...
     }
 
     // A renommer et commenter!
-    void ExecuterTestABC()
+    void ExecuterTestRetraitLigneSeul()
     {
       // Mise en place des données du test
-      
+      for (int j = 0; j < tabLogique.GetLength(1); j++)
+      {
+        tabLogique[tabLogique.GetLength(0) - 1, j] = TypeBloc.Gele;
+      }
       // Exécuter de la méthode à tester
-      
+      GererLigneCompleteLogique();
       // Validation des résultats
-      
+      for (int j = 0; j < tabLogique.GetLength(1); j++)
+      {
+        Debug.Assert(tabLogique[tabLogique.GetLength(0) - 1, j] == TypeBloc.None);
+      }
       // Clean-up
+      InitialiserTableau();
+    }
+    void ExecuterTestRetraitLigneSeulEtDecalage()
+    {
+      // Mise en place des données du test
+      for (int j = 0; j < tabLogique.GetLength(1); j++)
+      {
+        tabLogique[tabLogique.GetLength(0) - 1, j] = TypeBloc.Gele;
+        if (j < tabLogique.GetLength(1) - 1)
+        {
+          tabLogique[tabLogique.GetLength(0) - 2, j] = TypeBloc.Gele;
+        }
+      }
+      // Exécuter de la méthode à tester
+      GererLigneCompleteLogique();
+      // Validation des résultats
+      for (int j = 0; j < tabLogique.GetLength(1); j++)
+      {
+        Debug.Assert(tabLogique[tabLogique.GetLength(0) - 2, j] == TypeBloc.None);
+        if (j < tabLogique.GetLength(1) - 1)
+        {
+          Debug.Assert(tabLogique[tabLogique.GetLength(0) - 1, j] == TypeBloc.Gele);
+        }
+      }
+      // Clean-up
+      InitialiserTableau();
+    }
+    void ExecuterTestRetrait2LignesConsecutives()
+    {
+      // Mise en place des données du test
+      for (int j = 0; j < tabLogique.GetLength(1); j++)
+      {     
+        tabLogique[tabLogique.GetLength(0) - 1, j] = TypeBloc.Gele;
+        tabLogique[tabLogique.GetLength(0) - 2, j] = TypeBloc.Gele;
+        if (j < tabLogique.GetLength(1) - 1)
+        {
+          tabLogique[tabLogique.GetLength(0) - 3, j] = TypeBloc.Gele;
+          tabLogique[0, j] = TypeBloc.Gele;
+        }
+      }
+      // Exécuter de la méthode à tester
+      GererLigneCompleteLogique();
+      // Validation des résultats
+      for (int j = 0; j < tabLogique.GetLength(1); j++)
+      {
+        Debug.Assert(tabLogique[tabLogique.GetLength(0) - 4, j] == TypeBloc.None);
+        Debug.Assert(tabLogique[tabLogique.GetLength(0) - 3, j] == TypeBloc.None);
+        if (j < tabLogique.GetLength(1) - 1)
+        {
+          Debug.Assert(tabLogique[tabLogique.GetLength(0) - 1, j] == TypeBloc.Gele);
+          Debug.Assert(tabLogique[2, j] == TypeBloc.Gele);
+        }
+      }
+      // Clean-up
+      InitialiserTableau();
+    }
+    void ExecuterTestRetrait2LignesNonConsecutives()
+    {
+      // Mise en place des données du test
+      for (int j = 0; j < tabLogique.GetLength(1); j++)
+      {
+        tabLogique[tabLogique.GetLength(0) - 1, j] = TypeBloc.Gele;
+        tabLogique[0, j] = TypeBloc.Gele;
+      }
+      // Exécuter de la méthode à tester
+      GererLigneCompleteLogique();
+      // Validation des résultats
+      for (int j = 0; j < tabLogique.GetLength(1); j++)
+      {
+        Debug.Assert(tabLogique[tabLogique.GetLength(0) - 1, j] == TypeBloc.None);
+        Debug.Assert(tabLogique[0, j] == TypeBloc.None);
+        // Clean-up
+      }
+      InitialiserTableau();
+    }
+    void ExecuterTestRetrait3Lignes()
+    {
+      // Mise en place des données du test
+      for (int j = 0; j < tabLogique.GetLength(1); j++)
+      {
+        tabLogique[tabLogique.GetLength(0) - 1, j] = TypeBloc.Gele;
+        tabLogique[tabLogique.GetLength(0) - 2, j] = TypeBloc.Gele;
+        tabLogique[tabLogique.GetLength(0) - 3, j] = TypeBloc.Gele;
+      }
+      // Exécuter de la méthode à tester
+      GererLigneCompleteLogique();
+      // Validation des résultats
+      for (int j = 0; j < tabLogique.GetLength(1); j++)
+      {
+        Debug.Assert(tabLogique[tabLogique.GetLength(0) - 1, j] == TypeBloc.None);
+        Debug.Assert(tabLogique[tabLogique.GetLength(0) - 2, j] == TypeBloc.None);
+        Debug.Assert(tabLogique[tabLogique.GetLength(0) - 3, j] == TypeBloc.None);
+      }
+      // Clean-up
+      InitialiserTableau();
+    }
+    void ExecuterTestRetrait4Lignes()
+    {
+      // Mise en place des données du test
+      for (int j = 0; j < tabLogique.GetLength(1); j++)
+      {
+        tabLogique[tabLogique.GetLength(0) - 1, j] = TypeBloc.Gele;
+        tabLogique[tabLogique.GetLength(0) - 2, j] = TypeBloc.Gele;
+        tabLogique[tabLogique.GetLength(0) - 3, j] = TypeBloc.Gele;
+        tabLogique[tabLogique.GetLength(0) - 4, j] = TypeBloc.Gele;
+      }
+      // Exécuter de la méthode à tester
+      GererLigneCompleteLogique();
+      // Validation des résultats
+      for (int j = 0; j < tabLogique.GetLength(1); j++)
+      {
+        Debug.Assert(tabLogique[tabLogique.GetLength(0) - 1, j] == TypeBloc.None);
+        Debug.Assert(tabLogique[tabLogique.GetLength(0) - 2, j] == TypeBloc.None);
+        Debug.Assert(tabLogique[tabLogique.GetLength(0) - 3, j] == TypeBloc.None);
+        Debug.Assert(tabLogique[tabLogique.GetLength(0) - 4, j] == TypeBloc.None);
+      }
+      // Clean-up
+      InitialiserTableau();
     }
 
     #endregion
@@ -512,13 +685,16 @@ namespace TP3
       Options optionsDialog = new Options();
       optionsDialog.nbColonnesOptions.Value = nbColonnes;
       optionsDialog.nbLignesOptions.Value = nbLignes;
+      descenteBloc.Enabled = false; 
       optionsDialog.ShowDialog();
-      if (DialogResult == DialogResult.OK)
+      if (optionsDialog.DialogResult == DialogResult.OK)
       {
         nbLignes = (int)optionsDialog.nbLignesOptions.Value;
         nbColonnes = (int)optionsDialog.nbColonnesOptions.Value;
-        InitializeComponent();
+        musiqueActive = optionsDialog.musiqueOptions;
+        effetsSonoresActifs = optionsDialog.effetsOptions;
       }
+      //RecommencerPartie();
     }
   }
   enum TypeBloc

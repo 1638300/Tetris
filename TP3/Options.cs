@@ -16,16 +16,31 @@ namespace TP3
     {
       InitializeComponent();
     }
-    public int nbColonnesChanger;
-    public int nbLignesChanger;
-    public void nbColonnes_ValueChanged(object sender, EventArgs e)
+    public bool musiqueOptions;
+    public bool effetsOptions;
+
+    private void musique_CheckedChanged(object sender, EventArgs e)
     {
-      nbColonnesChanger = (int)nbColonnesOptions.Value; 
+      if (musique.Checked == true)
+      {
+        musiqueOptions = true;
+      }
+      else
+      {
+        musiqueOptions = false;
+      }
     }
 
-    public void nbLignes_ValueChanged(object sender, EventArgs e)
+    private void effetsSonores_CheckedChanged(object sender, EventArgs e)
     {
-      nbLignesChanger = (int)nbLignesOptions.Value;
+      if (effetsSonores.Checked == true)
+      {
+        effetsOptions = true;
+      }
+      else
+      {
+        effetsOptions = false;
+      }
     }
   }
 }

@@ -32,6 +32,10 @@
       this.nbColonnesOptions = new System.Windows.Forms.NumericUpDown();
       this.label1 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
+      this.OK = new System.Windows.Forms.Button();
+      this.Cancel = new System.Windows.Forms.Button();
+      this.musique = new System.Windows.Forms.CheckBox();
+      this.effetsSonores = new System.Windows.Forms.CheckBox();
       ((System.ComponentModel.ISupportInitialize)(this.nbLignesOptions)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.nbColonnesOptions)).BeginInit();
       this.SuspendLayout();
@@ -62,7 +66,6 @@
             0,
             0,
             0});
-      this.nbLignesOptions.ValueChanged += new System.EventHandler(this.nbLignes_ValueChanged);
       // 
       // nbColonnesOptions
       // 
@@ -85,7 +88,6 @@
             0,
             0,
             0});
-      this.nbColonnesOptions.ValueChanged += new System.EventHandler(this.nbColonnes_ValueChanged);
       // 
       // label1
       // 
@@ -105,11 +107,61 @@
       this.label2.TabIndex = 3;
       this.label2.Text = "nombre de ligne";
       // 
+      // OK
+      // 
+      this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
+      this.OK.Location = new System.Drawing.Point(25, 220);
+      this.OK.Name = "OK";
+      this.OK.Size = new System.Drawing.Size(75, 23);
+      this.OK.TabIndex = 4;
+      this.OK.Text = "OK";
+      this.OK.UseVisualStyleBackColor = true;
+      // 
+      // Cancel
+      // 
+      this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+      this.Cancel.Location = new System.Drawing.Point(181, 220);
+      this.Cancel.Name = "Cancel";
+      this.Cancel.Size = new System.Drawing.Size(75, 23);
+      this.Cancel.TabIndex = 5;
+      this.Cancel.Text = "Cancel";
+      this.Cancel.UseVisualStyleBackColor = true;
+      // 
+      // musique
+      // 
+      this.musique.AutoSize = true;
+      this.musique.Checked = true;
+      this.musique.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.musique.Location = new System.Drawing.Point(168, 98);
+      this.musique.Name = "musique";
+      this.musique.Size = new System.Drawing.Size(83, 21);
+      this.musique.TabIndex = 6;
+      this.musique.Text = "musique";
+      this.musique.UseVisualStyleBackColor = true;
+      this.musique.CheckedChanged += new System.EventHandler(this.musique_CheckedChanged);
+      // 
+      // effetsSonores
+      // 
+      this.effetsSonores.AutoSize = true;
+      this.effetsSonores.Checked = true;
+      this.effetsSonores.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.effetsSonores.Location = new System.Drawing.Point(168, 142);
+      this.effetsSonores.Name = "effetsSonores";
+      this.effetsSonores.Size = new System.Drawing.Size(120, 21);
+      this.effetsSonores.TabIndex = 7;
+      this.effetsSonores.Text = "effets sonores";
+      this.effetsSonores.UseVisualStyleBackColor = true;
+      this.effetsSonores.CheckedChanged += new System.EventHandler(this.effetsSonores_CheckedChanged);
+      // 
       // Options
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(282, 255);
+      this.Controls.Add(this.effetsSonores);
+      this.Controls.Add(this.musique);
+      this.Controls.Add(this.Cancel);
+      this.Controls.Add(this.OK);
       this.Controls.Add(this.label2);
       this.Controls.Add(this.label1);
       this.Controls.Add(this.nbColonnesOptions);
@@ -128,5 +180,9 @@
     private System.Windows.Forms.Label label2;
     public System.Windows.Forms.NumericUpDown nbLignesOptions;
     public System.Windows.Forms.NumericUpDown nbColonnesOptions;
+    private System.Windows.Forms.Button OK;
+    private System.Windows.Forms.Button Cancel;
+    private System.Windows.Forms.CheckBox musique;
+    private System.Windows.Forms.CheckBox effetsSonores;
   }
 }
