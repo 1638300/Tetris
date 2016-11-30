@@ -694,6 +694,7 @@ namespace TP3
         musiqueActive = optionsDialog.musiqueOptions;
         effetsSonoresActifs = optionsDialog.effetsOptions;
       }
+      descenteBloc.Enabled = true;
       //RecommencerPartie();
     }
   }
