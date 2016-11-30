@@ -249,9 +249,19 @@ namespace TP3
         positionXRelative[2] = 1;
         positionXRelative[3] = 2;
       }
-      MettreAJourPositionBlocDansTabLogique();
-      GererCouleurBloc();
-      AfficherBloc();
+      for (int i = 0; i < positionXRelative.Length; i++)
+      {
+        if (tabLogique[ligneCourante + positionYRelative[i], colonneCourante + positionXRelative[i]] != TypeBloc.Gele)
+        {
+          MettreAJourPositionBlocDansTabLogique();
+          GererCouleurBloc();
+          AfficherBloc();
+        }
+        else
+        {
+          Application.Exit();
+        }
+      }
     }
     void GererTypeBlocs()
     {
