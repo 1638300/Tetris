@@ -102,6 +102,7 @@ namespace TP3
       GererCreationBlocDansJeu();
       timer = DateTime.Now;
       descenteBloc.Enabled = true;
+            int ay;
     }
     void MettreAJourPositionBlocDansTabLogique()
     {
