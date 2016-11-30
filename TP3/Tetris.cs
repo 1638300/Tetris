@@ -251,7 +251,7 @@ namespace TP3
       }
       for (int i = 0; i < positionXRelative.Length; i++)
       {
-        if (tabLogique[ligneCourante + positionYRelative[i], colonneCourante + positionXRelative[i]] != TypeBloc.Gele)
+        if (tabLogique[ligneCourante + positionYRelative[i], colonneCourante + positionXRelative[i]] != TypeBloc.Gele) //La partie termine lorsqu'un bloc essaie de spawn où un bloc gelé existe.
         {
           MettreAJourPositionBlocDansTabLogique();
           GererCouleurBloc();
