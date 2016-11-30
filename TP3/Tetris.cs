@@ -96,9 +96,9 @@ namespace TP3
     void run()
     {
       InitialiserTableau();
-      InitialiserPartie();
+      InitialiserBloc();
     }
-    void InitialiserPartie()
+    void InitialiserBloc()
     {
       GererLigneComplete();
       colonneCourante = tabLogique.GetLength(1) / 2 - 1;
@@ -249,18 +249,21 @@ namespace TP3
         positionXRelative[2] = 1;
         positionXRelative[3] = 2;
       }
+      bool peutCreerBloc = true;
       for (int i = 0; i < positionXRelative.Length; i++)
       {
-        if (tabLogique[ligneCourante + positionYRelative[i], colonneCourante + positionXRelative[i]] != TypeBloc.Gele) //La partie termine lorsqu'un bloc essaie de spawn où un bloc gelé existe.
-        {
-          MettreAJourPositionBlocDansTabLogique();
-          GererCouleurBloc();
-          AfficherBloc();
-        }
-        else
-        {
-          Application.Exit();
-        }
+        peutCreerBloc = peutCreerBloc && tabLogique[ligneCourante + positionYRelative[i], colonneCourante + positionXRelative[i]] != TypeBloc.Gele;
+      }
+
+      if (peutCreerBloc == true)
+      {
+        MettreAJourPositionBlocDansTabLogique();
+        GererCouleurBloc();
+        AfficherBloc();
+      }
+      else
+      {
+        RecommencerPartie();
       }
     }
     void GererTypeBlocs()
@@ -489,6 +492,19 @@ namespace TP3
       nbPointsCourant += Math.Pow(5, nbLigneDetruite);
       nbPoints.Text = nbPointsCourant + "points";
     }
+    void RecommencerPartie()
+    {
+      //Réinitialisation des données de jeu
+      nbPointsCourant = 0;
+      nbPoints.Text = "0";
+
+      //Réinitialiser la musique
+      musique.PlayLooping();
+
+      //Réinitialiser le tableau
+      InitialiserSurfaceDeJeu(nbLignes, nbColonnes);
+      run();
+    }
     #region Code à développer
     /// <summary>
     /// Faites ici les appels requis pour vos tests unitaires.
@@ -686,7 +702,7 @@ namespace TP3
       {
         bloc = TypeBloc.Gele;
         MettreAJourPositionBlocDansTabLogique();
-        InitialiserPartie();
+        InitialiserBloc();
       }
     }
 
