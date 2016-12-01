@@ -28,7 +28,7 @@ namespace TP3
     TypeBloc[,] tabLogique = new TypeBloc[20, 10];
     TypeBloc bloc;
     Color blocCouleur;
-    System.Media.SoundPlayer musique = new System.Media.SoundPlayer("C:/Users/Yannick/Desktop/Tetris/Tetris/TP3/Resources/DragonForce_-_Through_the_Fire_and_Flames_HD_Offic.wav");
+    System.Media.SoundPlayer musique = new System.Media.SoundPlayer("DragonForce_-_Through_the_Fire_and_Flames_HD_Offic.wav");
     bool effetsSonoresActifs = true;
     bool musiqueActive = true;
     mouvement deplacement;
