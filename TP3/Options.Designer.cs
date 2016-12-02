@@ -49,7 +49,7 @@
             0});
       this.nbLignesOptions.Location = new System.Drawing.Point(3, 67);
       this.nbLignesOptions.Maximum = new decimal(new int[] {
-            200,
+            30,
             0,
             0,
             0});
@@ -75,6 +75,11 @@
             0,
             0});
       this.nbColonnesOptions.Location = new System.Drawing.Point(3, 27);
+      this.nbColonnesOptions.Maximum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
       this.nbColonnesOptions.Minimum = new decimal(new int[] {
             8,
             0,
