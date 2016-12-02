@@ -16,7 +16,7 @@ namespace TP3
 
     #region Code fourni
 
-    // Représentation visuelles du jeu en mémoire.
+    // Représentation visuelles du jeu en mémoire. Ajouter.
     PictureBox[,] toutesImagesVisuelles = null;
     PictureBox[,] ImagesBlocAVenir1 = null;
     PictureBox[,] ImagesBlocAVenir2 = null;
