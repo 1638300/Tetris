@@ -263,7 +263,21 @@ namespace TP3
       }
       else
       {
-        RecommencerPartie();
+        frmFinPartie finPartie = new frmFinPartie();
+        lblFinPartie.Visible = true;
+        descenteBloc.Enabled = false;
+        finPartie.ShowDialog();
+
+        if(finPartie.DialogResult == DialogResult.Retry)
+        {
+          lblFinPartie.Visible = false;
+          descenteBloc.Enabled = true;
+          RecommencerPartie();
+        }
+        else
+        {
+          Application.Exit();
+        }
       }
     }
     void GererTypeBlocs()
@@ -496,7 +510,7 @@ namespace TP3
     {
       //Réinitialisation des données de jeu
       nbPointsCourant = 0;
-      nbPoints.Text = "0";
+      nbPoints.Text = "0 point";
 
       //Réinitialiser la musique
       musique.PlayLooping();

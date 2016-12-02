@@ -33,6 +33,7 @@
       this.descenteBloc = new System.Windows.Forms.Timer(this.components);
       this.nbPoints = new System.Windows.Forms.Label();
       this.options = new System.Windows.Forms.Button();
+      this.lblFinPartie = new System.Windows.Forms.Label();
       this.SuspendLayout();
       // 
       // tableauJeu
@@ -48,17 +49,17 @@
       this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.01805F));
       this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.01805F));
       this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.01805F));
-      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-      this.tableauJeu.Location = new System.Drawing.Point(231, 52);
+      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+      this.tableauJeu.Location = new System.Drawing.Point(173, 42);
       this.tableauJeu.Margin = new System.Windows.Forms.Padding(0);
       this.tableauJeu.Name = "tableauJeu";
       this.tableauJeu.RowCount = 30;
@@ -82,17 +83,17 @@
       this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.001134F));
       this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.001134F));
       this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.001134F));
-      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-      this.tableauJeu.Size = new System.Drawing.Size(296, 543);
+      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableauJeu.Size = new System.Drawing.Size(222, 441);
       this.tableauJeu.TabIndex = 1;
       // 
       // descenteBloc
@@ -103,33 +104,46 @@
       // nbPoints
       // 
       this.nbPoints.AutoSize = true;
-      this.nbPoints.Location = new System.Drawing.Point(129, 75);
+      this.nbPoints.Location = new System.Drawing.Point(97, 61);
+      this.nbPoints.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.nbPoints.Name = "nbPoints";
-      this.nbPoints.Size = new System.Drawing.Size(51, 17);
+      this.nbPoints.Size = new System.Drawing.Size(39, 13);
       this.nbPoints.TabIndex = 2;
       this.nbPoints.Text = "0 point";
       // 
       // options
       // 
-      this.options.Location = new System.Drawing.Point(616, 75);
+      this.options.Location = new System.Drawing.Point(462, 61);
+      this.options.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.options.Name = "options";
-      this.options.Size = new System.Drawing.Size(75, 23);
+      this.options.Size = new System.Drawing.Size(56, 19);
       this.options.TabIndex = 3;
       this.options.Text = "options";
       this.options.UseVisualStyleBackColor = true;
       this.options.Click += new System.EventHandler(this.options_Click);
       // 
-      // Main
+      // lblFinPartie
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+      this.lblFinPartie.AutoSize = true;
+      this.lblFinPartie.Font = new System.Drawing.Font("Castellar", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblFinPartie.Location = new System.Drawing.Point(92, 557);
+      this.lblFinPartie.Name = "lblFinPartie";
+      this.lblFinPartie.Size = new System.Drawing.Size(418, 44);
+      this.lblFinPartie.TabIndex = 4;
+      this.lblFinPartie.Text = "Fin de la partie !";
+      this.lblFinPartie.Visible = false;
+      // 
+      // Tetris
+      // 
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(771, 955);
+      this.ClientSize = new System.Drawing.Size(578, 776);
+      this.Controls.Add(this.lblFinPartie);
       this.Controls.Add(this.options);
       this.Controls.Add(this.nbPoints);
       this.Controls.Add(this.tableauJeu);
       this.KeyPreview = true;
-      this.Margin = new System.Windows.Forms.Padding(4);
-      this.Name = "Main";
+      this.Name = "Tetris";
       this.Text = "Form1";
       this.Load += new System.EventHandler(this.frmLoad);
       this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
@@ -144,6 +158,7 @@
     private System.Windows.Forms.Timer descenteBloc;
     private System.Windows.Forms.Label nbPoints;
     private System.Windows.Forms.Button options;
+    private System.Windows.Forms.Label lblFinPartie;
   }
 }
 
