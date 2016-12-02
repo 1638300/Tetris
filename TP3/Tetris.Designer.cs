@@ -33,6 +33,8 @@
       this.descenteBloc = new System.Windows.Forms.Timer(this.components);
       this.nbPoints = new System.Windows.Forms.Label();
       this.options = new System.Windows.Forms.Button();
+      this.tabBlocAVenir1 = new System.Windows.Forms.TableLayoutPanel();
+      this.tabBlocAVenir2 = new System.Windows.Forms.TableLayoutPanel();
       this.SuspendLayout();
       // 
       // tableauJeu
@@ -57,7 +59,7 @@
       this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
       this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
       this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
       this.tableauJeu.Location = new System.Drawing.Point(231, 52);
       this.tableauJeu.Margin = new System.Windows.Forms.Padding(0);
       this.tableauJeu.Name = "tableauJeu";
@@ -115,21 +117,58 @@
       this.options.Name = "options";
       this.options.Size = new System.Drawing.Size(75, 23);
       this.options.TabIndex = 3;
+      this.options.TabStop = false;
       this.options.Text = "options";
       this.options.UseVisualStyleBackColor = true;
       this.options.Click += new System.EventHandler(this.options_Click);
       // 
-      // Main
+      // tabBlocAVenir1
+      // 
+      this.tabBlocAVenir1.ColumnCount = 4;
+      this.tabBlocAVenir1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.tabBlocAVenir1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tabBlocAVenir1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tabBlocAVenir1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tabBlocAVenir1.Location = new System.Drawing.Point(602, 164);
+      this.tabBlocAVenir1.Name = "tabBlocAVenir1";
+      this.tabBlocAVenir1.RowCount = 4;
+      this.tabBlocAVenir1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tabBlocAVenir1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tabBlocAVenir1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tabBlocAVenir1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tabBlocAVenir1.Size = new System.Drawing.Size(121, 103);
+      this.tabBlocAVenir1.TabIndex = 4;
+      // 
+      // tabBlocAVenir2
+      // 
+      this.tabBlocAVenir2.ColumnCount = 4;
+      this.tabBlocAVenir2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.tabBlocAVenir2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tabBlocAVenir2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tabBlocAVenir2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tabBlocAVenir2.Location = new System.Drawing.Point(602, 348);
+      this.tabBlocAVenir2.Name = "tabBlocAVenir2";
+      this.tabBlocAVenir2.RowCount = 4;
+      this.tabBlocAVenir2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tabBlocAVenir2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tabBlocAVenir2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tabBlocAVenir2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tabBlocAVenir2.Size = new System.Drawing.Size(121, 103);
+      this.tabBlocAVenir2.TabIndex = 5;
+      // 
+      // Tetris
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(771, 955);
+      this.Controls.Add(this.tabBlocAVenir2);
+      this.Controls.Add(this.tabBlocAVenir1);
       this.Controls.Add(this.options);
       this.Controls.Add(this.nbPoints);
       this.Controls.Add(this.tableauJeu);
       this.KeyPreview = true;
       this.Margin = new System.Windows.Forms.Padding(4);
-      this.Name = "Main";
+      this.Name = "Tetris";
       this.Text = "Form1";
       this.Load += new System.EventHandler(this.frmLoad);
       this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
@@ -144,6 +183,8 @@
     private System.Windows.Forms.Timer descenteBloc;
     private System.Windows.Forms.Label nbPoints;
     private System.Windows.Forms.Button options;
+    private System.Windows.Forms.TableLayoutPanel tabBlocAVenir1;
+    private System.Windows.Forms.TableLayoutPanel tabBlocAVenir2;
   }
 }
 
