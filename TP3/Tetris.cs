@@ -413,13 +413,29 @@ namespace TP3
         tabComptePieces[6]++;
       }
       bool peutCreerBloc = true;
+      bool jeuDangeureux = false;
       for (int i = 0; i < positionXRelative.Length; i++)
       {
         peutCreerBloc = peutCreerBloc && tabLogique[ligneCourante + positionYRelative[i], colonneCourante + positionXRelative[i]] != TypeBloc.Gele;
       }
-
+      
       if (peutCreerBloc == true)
       {
+        for (int i = 0; i < 8; i++)
+        {
+          for (int j = 0; j < tabLogique.GetLength(1); j++)
+          {
+            jeuDangeureux = jeuDangeureux || tabLogique[i, j] == TypeBloc.Gele;
+          }
+        }
+        if(jeuDangeureux == true)
+        {
+          imgMascot.Image = Properties.Resources.ChocoUmiForTetris;
+        }
+        else
+        {
+          imgMascot.Image = Properties.Resources.ChocoForTetris;
+        }
         MettreAJourPositionBlocDansTabLogique();
         GererCouleurBloc();
         AfficherBloc();
@@ -855,6 +871,8 @@ namespace TP3
         GererPointage(nbLigneDetruite);
         if (effetsSonoresActifs)
         {
+          imgMascot.Image = Properties.Resources.ChocoDioForTetris;
+          timerDestroyLine.Enabled = true;
           ligneDetruite.URL = "Anime WOW Sound Effect.mp3";
           ligneDetruite.controls.play();
         }
@@ -1235,6 +1253,12 @@ namespace TP3
         RecommencerPartie();
       }
       
+    }
+
+    private void timerDestroyLine_Tick(object sender, EventArgs e)
+    {
+      imgMascot.Image = Properties.Resources.ChocoForTetris;
+      timerDestroyLine.Enabled = false;
     }
   }
   enum TypeBloc
