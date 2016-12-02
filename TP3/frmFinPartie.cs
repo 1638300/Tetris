@@ -16,5 +16,10 @@ namespace TP3
     {
       InitializeComponent();
     }
+
+    public void SetTempsJeu(string temps)
+    {
+      lblTemps.Text = temps;
+    }
   }
 }
