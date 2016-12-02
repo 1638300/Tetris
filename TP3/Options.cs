@@ -16,8 +16,8 @@ namespace TP3
     {
       InitializeComponent();
     }
-    public bool musiqueOptions;
-    public bool effetsOptions;
+    public bool musiqueOptions = true;
+    public bool effetsOptions = true;
 
     private void musique_CheckedChanged(object sender, EventArgs e)
     {
