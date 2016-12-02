@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Media;
 using System.Diagnostics;
-
+using WMPLib;
 //voir test
 namespace TP3
 {
@@ -17,24 +17,41 @@ namespace TP3
     #region Code fourni
 
     // Représentation visuelles du jeu en mémoire. Ajouter.
+
+    //Tous les blocs à l'affichage
     PictureBox[,] toutesImagesVisuelles = null;
+    //Affichage du prochain bloc 
     PictureBox[,] ImagesBlocAVenir1 = null;
+    //Affichage du bloc après le prochain bloc
     PictureBox[,] ImagesBlocAVenir2 = null;
     PictureBox[,] ImagesBlocAVenir3 = null;
     PictureBox[,] ImagesBlocAVenir4 = null;
     int nbLignes = 20;
+    //Nombre de colonne de la grille de jeu et d'affichage
     int nbColonnes = 10;
+    //Les positions en y des blocs actifs par rapport au point de rotation
     int[] positionYRelative = new int[4];
+    //Les positions en x des blocs actifs par rapport au point de rotation
     int[] positionXRelative = new int[4];
+    //La position en x du point de rotation
     int[] tabComptePieces = new int[7]; //0 = carré, 1 = Ligne, 2 = T, 3 = L, 4 = J, 5 = S, 6 = Z.
     int colonneCourante;
+    //La position en y du point de rotation
     int ligneCourante;
     Random rnd = new Random();
+    //Le tableau logique du jeu de Tetris contenant les types de bloc de la partie en cours
     TypeBloc[,] tabLogique = new TypeBloc[20, 10];
+    //Le type de bloc en cours du bloc joué
     TypeBloc bloc;
     TypeBloc[] blocAVenir = new TypeBloc[5];
+    //La couleur du bloc courant
     Color blocCouleur;
+    //La musique du jeu
     System.Media.SoundPlayer musique = new System.Media.SoundPlayer("DragonForce_-_Through_the_Fire_and_Flames_HD_Offic.wav");
+    WindowsMediaPlayer explosion = new WindowsMediaPlayer();
+    WindowsMediaPlayer ligneDetruite = new WindowsMediaPlayer();
+
+    //Les effets sonores
     bool effetsSonoresActifs = true;
     bool musiqueActive = true;
     mouvement deplacement;
@@ -226,7 +243,11 @@ namespace TP3
 
     void run()
     {
-      musique.PlayLooping();
+
+      if (musiqueActive)
+      {
+        musique.PlayLooping();
+      }  
       InitialiserTableau();
       InitialiserTabBloc();
       InitialiserBloc();
@@ -692,6 +713,7 @@ namespace TP3
       }
       MettreAJourPositionBlocDansTabLogique();
       AfficherBloc();
+
     }
     bool VerifierDeplacementPossible()
     {
@@ -831,6 +853,16 @@ namespace TP3
       if (nbLigneDetruite > 0)
       {
         GererPointage(nbLigneDetruite);
+        if (effetsSonoresActifs)
+        {
+          ligneDetruite.URL = "Anime WOW Sound Effect.mp3";
+          ligneDetruite.controls.play();
+        }
+      }
+      if (effetsSonoresActifs)
+      {
+        explosion.URL = "Blast-SoundBible.com-2068539061.mp3";
+        explosion.controls.play();
       }
     }
     int GererLigneCompleteLogique()
@@ -905,13 +937,20 @@ namespace TP3
       nbPointsCourant = 0;
       nbPoints.Text = "0";
       tempsDebutProgramme = DateTime.Now;
-
-      //Réinitialiser la musique
-      musique.PlayLooping();
-
       //Réinitialiser le tableau
       InitialiserSurfaceDeJeu(nbLignes, nbColonnes);
       run();
+    }
+    void GererSon()
+    {
+      if (musiqueActive)
+      {
+      musique.PlayLooping();
+      }
+      else
+      {
+      musique.Stop();
+      }
     }
     #region Code à développer
     /// <summary>
@@ -1192,8 +1231,10 @@ namespace TP3
         nbColonnes = (int)optionsDialog.nbColonnesOptions.Value;
         musiqueActive = optionsDialog.musiqueOptions;
         effetsSonoresActifs = optionsDialog.effetsOptions;
+        GererSon();
+        RecommencerPartie();
       }
-      RecommencerPartie();
+      
     }
   }
   enum TypeBloc
