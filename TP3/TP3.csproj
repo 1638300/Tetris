@@ -110,9 +110,6 @@
     <Content Include="Resources\DragonForce_-_Through_the_Fire_and_Flames_HD_Offic.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Yiruma - River flows in you.mp3">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="BTWMPPlugin">
