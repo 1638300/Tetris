@@ -24,6 +24,7 @@ namespace TP3
     PictureBox[,] ImagesBlocAVenir1 = null;
     //Affichage du bloc après le prochain bloc
     PictureBox[,] ImagesBlocAVenir2 = null;
+    bool jeuDangeureux = false;
     PictureBox[,] ImagesBlocAVenir3 = null;
     PictureBox[,] ImagesBlocAVenir4 = null;
     int nbLignes = 20;
@@ -33,8 +34,8 @@ namespace TP3
     int[] positionYRelative = new int[4];
     //Les positions en x des blocs actifs par rapport au point de rotation
     int[] positionXRelative = new int[4];
-    //La position en x du point de rotation
     int[] tabComptePieces = new int[7]; //0 = carré, 1 = Ligne, 2 = T, 3 = L, 4 = J, 5 = S, 6 = Z.
+    //La position en x du point de rotation
     int colonneCourante;
     //La position en y du point de rotation
     int ligneCourante;
@@ -48,13 +49,17 @@ namespace TP3
     Color blocCouleur;
     //La musique du jeu
     System.Media.SoundPlayer musique = new System.Media.SoundPlayer("DragonForce_-_Through_the_Fire_and_Flames_HD_Offic.wav");
+    //Effet sonore de placement de bloc
     WindowsMediaPlayer explosion = new WindowsMediaPlayer();
+    //Effet sonor de destruction de ligne et début de partie
     WindowsMediaPlayer ligneDetruite = new WindowsMediaPlayer();
-
-    //Les effets sonores
+    //Indique si les effets sonores sont actifs ou non
     bool effetsSonoresActifs = true;
+    //Indique si la musique est active ou non
     bool musiqueActive = true;
+    //Mouvement que le joueur fait
     mouvement deplacement;
+
     DateTime timer = new DateTime();
     DateTime tempsDebutProgramme;
     double nbPointsCourant = 0;
@@ -254,6 +259,23 @@ namespace TP3
     }
     void InitialiserBloc()
     {
+      //Changement de visage, si il y a lieu au début
+      jeuDangeureux = false;
+      for (int i = 0; i < 8; i++)
+      {
+        for (int j = 0; j < tabLogique.GetLength(1); j++)
+        {
+          jeuDangeureux = jeuDangeureux || tabLogique[i, j] == TypeBloc.Gele;
+        }
+      }
+      if (jeuDangeureux == true)
+      {
+        imgMascot.Image = Properties.Resources.ChocoUmiForTetris;
+      }
+      else
+      {
+        imgMascot.Image = Properties.Resources.ChocoForTetris;
+      }
       GererLigneComplete();
       colonneCourante = tabLogique.GetLength(1) / 2 - 1;
       ligneCourante = 0;
@@ -413,7 +435,6 @@ namespace TP3
         tabComptePieces[6]++;
       }
       bool peutCreerBloc = true;
-      bool jeuDangeureux = false;
       for (int i = 0; i < positionXRelative.Length; i++)
       {
         peutCreerBloc = peutCreerBloc && tabLogique[ligneCourante + positionYRelative[i], colonneCourante + positionXRelative[i]] != TypeBloc.Gele;
@@ -421,21 +442,6 @@ namespace TP3
       
       if (peutCreerBloc == true)
       {
-        for (int i = 0; i < 8; i++)
-        {
-          for (int j = 0; j < tabLogique.GetLength(1); j++)
-          {
-            jeuDangeureux = jeuDangeureux || tabLogique[i, j] == TypeBloc.Gele;
-          }
-        }
-        if(jeuDangeureux == true)
-        {
-          imgMascot.Image = Properties.Resources.ChocoUmiForTetris;
-        }
-        else
-        {
-          imgMascot.Image = Properties.Resources.ChocoForTetris;
-        }
         MettreAJourPositionBlocDansTabLogique();
         GererCouleurBloc();
         AfficherBloc();
@@ -868,11 +874,11 @@ namespace TP3
       int nbLigneDetruite = GererLigneCompleteLogique();
       if (nbLigneDetruite > 0)
       {
+        imgMascot.Image = Properties.Resources.ChocoDioForTetris;
+        timerDestroyLine.Enabled = true;
         GererPointage(nbLigneDetruite);
         if (effetsSonoresActifs)
         {
-          imgMascot.Image = Properties.Resources.ChocoDioForTetris;
-          timerDestroyLine.Enabled = true;
           ligneDetruite.URL = "Anime WOW Sound Effect.mp3";
           ligneDetruite.controls.play();
         }
@@ -1249,6 +1255,7 @@ namespace TP3
         nbColonnes = (int)optionsDialog.nbColonnesOptions.Value;
         musiqueActive = optionsDialog.musiqueOptions;
         effetsSonoresActifs = optionsDialog.effetsOptions;
+        tabLogique = new TypeBloc[nbLignes, nbColonnes];
         GererSon();
         RecommencerPartie();
       }
@@ -1257,7 +1264,22 @@ namespace TP3
 
     private void timerDestroyLine_Tick(object sender, EventArgs e)
     {
-      imgMascot.Image = Properties.Resources.ChocoForTetris;
+      jeuDangeureux = false;
+      for (int i = 0; i < 8; i++)
+      {
+        for (int j = 0; j < tabLogique.GetLength(1); j++)
+        {
+          jeuDangeureux = jeuDangeureux || tabLogique[i, j] == TypeBloc.Gele;
+        }
+      }
+      if (jeuDangeureux == true)
+      {
+        imgMascot.Image = Properties.Resources.ChocoUmiForTetris;
+      }
+      else
+      {
+        imgMascot.Image = Properties.Resources.ChocoForTetris;
+      }
       timerDestroyLine.Enabled = false;
     }
   }
