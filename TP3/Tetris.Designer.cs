@@ -37,24 +37,25 @@
       this.tabBlocAVenir2 = new System.Windows.Forms.TableLayoutPanel();
       this.menuJeu = new System.Windows.Forms.MenuStrip();
       this.menuItemJeu = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuItemOptions = new System.Windows.Forms.ToolStripMenuItem();
       this.menuItemRecommencer = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuItemQuitter = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+      this.menuItemQuitter = new System.Windows.Forms.ToolStripMenuItem();
+      this.menuItemOptions = new System.Windows.Forms.ToolStripMenuItem();
       this.lblTempsEcoule = new System.Windows.Forms.Label();
       this.boxTemps = new System.Windows.Forms.GroupBox();
-      this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.boxPoints = new System.Windows.Forms.GroupBox();
       this.groupNextBloc = new System.Windows.Forms.GroupBox();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-      this.tabBlocAVenir4 = new System.Windows.Forms.TableLayoutPanel();
       this.tabBlocAVenir3 = new System.Windows.Forms.TableLayoutPanel();
+      this.tabBlocAVenir4 = new System.Windows.Forms.TableLayoutPanel();
+      this.timerDestroyLine = new System.Windows.Forms.Timer(this.components);
+      this.imgMascot = new System.Windows.Forms.PictureBox();
       this.menuJeu.SuspendLayout();
       this.boxTemps.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
       this.boxPoints.SuspendLayout();
       this.groupNextBloc.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.imgMascot)).BeginInit();
       this.SuspendLayout();
       // 
       // tableauJeu
@@ -79,7 +80,7 @@
       this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+      this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
       this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
       this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
       this.tableauJeu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
@@ -157,7 +158,7 @@
       this.tabBlocAVenir1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tabBlocAVenir1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tabBlocAVenir1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tabBlocAVenir1.Size = new System.Drawing.Size(121, 103);
+      this.tabBlocAVenir1.Size = new System.Drawing.Size(121, 99);
       this.tabBlocAVenir1.TabIndex = 4;
       // 
       // tabBlocAVenir2
@@ -167,14 +168,14 @@
       this.tabBlocAVenir2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tabBlocAVenir2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tabBlocAVenir2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tabBlocAVenir2.Location = new System.Drawing.Point(3, 119);
+      this.tabBlocAVenir2.Location = new System.Drawing.Point(3, 108);
       this.tabBlocAVenir2.Name = "tabBlocAVenir2";
       this.tabBlocAVenir2.RowCount = 4;
       this.tabBlocAVenir2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tabBlocAVenir2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tabBlocAVenir2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tabBlocAVenir2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tabBlocAVenir2.Size = new System.Drawing.Size(121, 103);
+      this.tabBlocAVenir2.Size = new System.Drawing.Size(121, 99);
       this.tabBlocAVenir2.TabIndex = 5;
       // 
       // menuJeu
@@ -198,31 +199,31 @@
       this.menuItemJeu.Size = new System.Drawing.Size(36, 20);
       this.menuItemJeu.Text = "Jeu";
       // 
+      // menuItemRecommencer
+      // 
+      this.menuItemRecommencer.Name = "menuItemRecommencer";
+      this.menuItemRecommencer.Size = new System.Drawing.Size(151, 22);
+      this.menuItemRecommencer.Text = "Recommencer";
+      this.menuItemRecommencer.Click += new System.EventHandler(this.menuItemRecommencer_Click);
+      // 
+      // toolStripSeparator1
+      // 
+      this.toolStripSeparator1.Name = "toolStripSeparator1";
+      this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
+      // 
+      // menuItemQuitter
+      // 
+      this.menuItemQuitter.Name = "menuItemQuitter";
+      this.menuItemQuitter.Size = new System.Drawing.Size(151, 22);
+      this.menuItemQuitter.Text = "Quitter";
+      this.menuItemQuitter.Click += new System.EventHandler(this.menuItemQuitter_Click);
+      // 
       // menuItemOptions
       // 
       this.menuItemOptions.Name = "menuItemOptions";
       this.menuItemOptions.Size = new System.Drawing.Size(61, 20);
       this.menuItemOptions.Text = "Options";
       this.menuItemOptions.Click += new System.EventHandler(this.menuItemOptions_Click);
-      // 
-      // menuItemRecommencer
-      // 
-      this.menuItemRecommencer.Name = "menuItemRecommencer";
-      this.menuItemRecommencer.Size = new System.Drawing.Size(152, 22);
-      this.menuItemRecommencer.Text = "Recommencer";
-      this.menuItemRecommencer.Click += new System.EventHandler(this.menuItemRecommencer_Click);
-      // 
-      // menuItemQuitter
-      // 
-      this.menuItemQuitter.Name = "menuItemQuitter";
-      this.menuItemQuitter.Size = new System.Drawing.Size(152, 22);
-      this.menuItemQuitter.Text = "Quitter";
-      this.menuItemQuitter.Click += new System.EventHandler(this.menuItemQuitter_Click);
-      // 
-      // toolStripSeparator1
-      // 
-      this.toolStripSeparator1.Name = "toolStripSeparator1";
-      this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
       // 
       // lblTempsEcoule
       // 
@@ -244,16 +245,6 @@
       this.boxTemps.TabStop = false;
       this.boxTemps.Text = "Temps écoulé";
       // 
-      // pictureBox1
-      // 
-      this.pictureBox1.Image = global::TP3.Properties.Resources.ChocoForTetris;
-      this.pictureBox1.Location = new System.Drawing.Point(23, 142);
-      this.pictureBox1.Name = "pictureBox1";
-      this.pictureBox1.Size = new System.Drawing.Size(301, 351);
-      this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-      this.pictureBox1.TabIndex = 9;
-      this.pictureBox1.TabStop = false;
-      // 
       // boxPoints
       // 
       this.boxPoints.Controls.Add(this.nbPoints);
@@ -269,7 +260,7 @@
       this.groupNextBloc.Controls.Add(this.tableLayoutPanel1);
       this.groupNextBloc.Location = new System.Drawing.Point(587, 52);
       this.groupNextBloc.Name = "groupNextBloc";
-      this.groupNextBloc.Size = new System.Drawing.Size(142, 485);
+      this.groupNextBloc.Size = new System.Drawing.Size(142, 441);
       this.groupNextBloc.TabIndex = 10;
       this.groupNextBloc.TabStop = false;
       this.groupNextBloc.Text = "Next";
@@ -290,25 +281,8 @@
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(136, 466);
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(136, 422);
       this.tableLayoutPanel1.TabIndex = 0;
-      // 
-      // tabBlocAVenir4
-      // 
-      this.tabBlocAVenir4.ColumnCount = 4;
-      this.tabBlocAVenir4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tabBlocAVenir4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tabBlocAVenir4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tabBlocAVenir4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tabBlocAVenir4.Location = new System.Drawing.Point(3, 351);
-      this.tabBlocAVenir4.Name = "tabBlocAVenir4";
-      this.tabBlocAVenir4.RowCount = 4;
-      this.tabBlocAVenir4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tabBlocAVenir4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tabBlocAVenir4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tabBlocAVenir4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tabBlocAVenir4.Size = new System.Drawing.Size(121, 99);
-      this.tabBlocAVenir4.TabIndex = 6;
       // 
       // tabBlocAVenir3
       // 
@@ -317,7 +291,7 @@
       this.tabBlocAVenir3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tabBlocAVenir3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tabBlocAVenir3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tabBlocAVenir3.Location = new System.Drawing.Point(3, 235);
+      this.tabBlocAVenir3.Location = new System.Drawing.Point(3, 213);
       this.tabBlocAVenir3.Name = "tabBlocAVenir3";
       this.tabBlocAVenir3.RowCount = 4;
       this.tabBlocAVenir3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -327,14 +301,46 @@
       this.tabBlocAVenir3.Size = new System.Drawing.Size(121, 99);
       this.tabBlocAVenir3.TabIndex = 5;
       // 
+      // tabBlocAVenir4
+      // 
+      this.tabBlocAVenir4.ColumnCount = 4;
+      this.tabBlocAVenir4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.tabBlocAVenir4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tabBlocAVenir4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tabBlocAVenir4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tabBlocAVenir4.Location = new System.Drawing.Point(3, 318);
+      this.tabBlocAVenir4.Name = "tabBlocAVenir4";
+      this.tabBlocAVenir4.RowCount = 4;
+      this.tabBlocAVenir4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tabBlocAVenir4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tabBlocAVenir4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tabBlocAVenir4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tabBlocAVenir4.Size = new System.Drawing.Size(121, 99);
+      this.tabBlocAVenir4.TabIndex = 6;
+      // 
+      // timerDestroyLine
+      // 
+      this.timerDestroyLine.Interval = 1000;
+      this.timerDestroyLine.Tick += new System.EventHandler(this.timerDestroyLine_Tick);
+      // 
+      // imgMascot
+      // 
+      this.imgMascot.Image = global::TP3.Properties.Resources.ChocoForTetris;
+      this.imgMascot.Location = new System.Drawing.Point(23, 142);
+      this.imgMascot.Name = "imgMascot";
+      this.imgMascot.Size = new System.Drawing.Size(301, 351);
+      this.imgMascot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+      this.imgMascot.TabIndex = 9;
+      this.imgMascot.TabStop = false;
+      // 
       // Tetris
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(741, 549);
+      this.ClientSize = new System.Drawing.Size(741, 514);
       this.Controls.Add(this.groupNextBloc);
       this.Controls.Add(this.boxPoints);
-      this.Controls.Add(this.pictureBox1);
+      this.Controls.Add(this.imgMascot);
       this.Controls.Add(this.boxTemps);
       this.Controls.Add(this.tableauJeu);
       this.Controls.Add(this.menuJeu);
@@ -352,11 +358,11 @@
       this.menuJeu.PerformLayout();
       this.boxTemps.ResumeLayout(false);
       this.boxTemps.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
       this.boxPoints.ResumeLayout(false);
       this.boxPoints.PerformLayout();
       this.groupNextBloc.ResumeLayout(false);
       this.tableLayoutPanel1.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.imgMascot)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -377,12 +383,13 @@
     private System.Windows.Forms.ToolStripMenuItem menuItemOptions;
     private System.Windows.Forms.Label lblTempsEcoule;
     private System.Windows.Forms.GroupBox boxTemps;
-    private System.Windows.Forms.PictureBox pictureBox1;
+    private System.Windows.Forms.PictureBox imgMascot;
     private System.Windows.Forms.GroupBox boxPoints;
     private System.Windows.Forms.GroupBox groupNextBloc;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private System.Windows.Forms.TableLayoutPanel tabBlocAVenir3;
     private System.Windows.Forms.TableLayoutPanel tabBlocAVenir4;
+    private System.Windows.Forms.Timer timerDestroyLine;
   }
 }
 

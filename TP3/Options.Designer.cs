@@ -51,7 +51,8 @@
             0,
             0,
             0});
-      this.nbLignesOptions.Location = new System.Drawing.Point(148, 55);
+      this.nbLignesOptions.Location = new System.Drawing.Point(111, 45);
+      this.nbLignesOptions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.nbLignesOptions.Maximum = new decimal(new int[] {
             30,
             0,
@@ -63,7 +64,7 @@
             0,
             0});
       this.nbLignesOptions.Name = "nbLignesOptions";
-      this.nbLignesOptions.Size = new System.Drawing.Size(120, 22);
+      this.nbLignesOptions.Size = new System.Drawing.Size(90, 20);
       this.nbLignesOptions.TabIndex = 0;
       this.nbLignesOptions.Value = new decimal(new int[] {
             20,
@@ -78,7 +79,8 @@
             0,
             0,
             0});
-      this.nbColonnesOptions.Location = new System.Drawing.Point(6, 55);
+      this.nbColonnesOptions.Location = new System.Drawing.Point(4, 45);
+      this.nbColonnesOptions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.nbColonnesOptions.Maximum = new decimal(new int[] {
             15,
             0,
@@ -90,7 +92,7 @@
             0,
             0});
       this.nbColonnesOptions.Name = "nbColonnesOptions";
-      this.nbColonnesOptions.Size = new System.Drawing.Size(120, 22);
+      this.nbColonnesOptions.Size = new System.Drawing.Size(90, 20);
       this.nbColonnesOptions.TabIndex = 1;
       this.nbColonnesOptions.Value = new decimal(new int[] {
             10,
@@ -101,27 +103,30 @@
       // label1
       // 
       this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(6, 35);
+      this.label1.Location = new System.Drawing.Point(4, 28);
+      this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(130, 17);
+      this.label1.Size = new System.Drawing.Size(98, 13);
       this.label1.TabIndex = 2;
       this.label1.Text = "nombre de colonne";
       // 
       // label2
       // 
       this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(150, 35);
+      this.label2.Location = new System.Drawing.Point(112, 28);
+      this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(110, 17);
+      this.label2.Size = new System.Drawing.Size(82, 13);
       this.label2.TabIndex = 3;
       this.label2.Text = "nombre de ligne";
       // 
       // OK
       // 
       this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
-      this.OK.Location = new System.Drawing.Point(25, 220);
+      this.OK.Location = new System.Drawing.Point(19, 179);
+      this.OK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.OK.Name = "OK";
-      this.OK.Size = new System.Drawing.Size(75, 23);
+      this.OK.Size = new System.Drawing.Size(56, 19);
       this.OK.TabIndex = 4;
       this.OK.Text = "OK";
       this.OK.UseVisualStyleBackColor = true;
@@ -129,9 +134,10 @@
       // Cancel
       // 
       this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-      this.Cancel.Location = new System.Drawing.Point(181, 220);
+      this.Cancel.Location = new System.Drawing.Point(136, 179);
+      this.Cancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.Cancel.Name = "Cancel";
-      this.Cancel.Size = new System.Drawing.Size(75, 23);
+      this.Cancel.Size = new System.Drawing.Size(56, 19);
       this.Cancel.TabIndex = 5;
       this.Cancel.Text = "Cancel";
       this.Cancel.UseVisualStyleBackColor = true;
@@ -141,9 +147,10 @@
       this.musique.AutoSize = true;
       this.musique.Checked = true;
       this.musique.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.musique.Location = new System.Drawing.Point(0, 51);
+      this.musique.Location = new System.Drawing.Point(0, 41);
+      this.musique.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.musique.Name = "musique";
-      this.musique.Size = new System.Drawing.Size(83, 21);
+      this.musique.Size = new System.Drawing.Size(65, 17);
       this.musique.TabIndex = 6;
       this.musique.Text = "musique";
       this.musique.UseVisualStyleBackColor = true;
@@ -154,9 +161,10 @@
       this.effetsSonores.AutoSize = true;
       this.effetsSonores.Checked = true;
       this.effetsSonores.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.effetsSonores.Location = new System.Drawing.Point(0, 24);
+      this.effetsSonores.Location = new System.Drawing.Point(0, 20);
+      this.effetsSonores.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.effetsSonores.Name = "effetsSonores";
-      this.effetsSonores.Size = new System.Drawing.Size(120, 21);
+      this.effetsSonores.Size = new System.Drawing.Size(92, 17);
       this.effetsSonores.TabIndex = 7;
       this.effetsSonores.Text = "effets sonores";
       this.effetsSonores.UseVisualStyleBackColor = true;
@@ -168,9 +176,11 @@
       this.grpGrille.Controls.Add(this.label1);
       this.grpGrille.Controls.Add(this.label2);
       this.grpGrille.Controls.Add(this.nbColonnesOptions);
-      this.grpGrille.Location = new System.Drawing.Point(-4, 0);
+      this.grpGrille.Location = new System.Drawing.Point(-3, 0);
+      this.grpGrille.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.grpGrille.Name = "grpGrille";
-      this.grpGrille.Size = new System.Drawing.Size(274, 84);
+      this.grpGrille.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.grpGrille.Size = new System.Drawing.Size(206, 68);
       this.grpGrille.TabIndex = 8;
       this.grpGrille.TabStop = false;
       this.grpGrille.Text = "Grille de jeu";
@@ -179,22 +189,26 @@
       // 
       this.grpSon.Controls.Add(this.effetsSonores);
       this.grpSon.Controls.Add(this.musique);
-      this.grpSon.Location = new System.Drawing.Point(7, 110);
+      this.grpSon.Location = new System.Drawing.Point(5, 89);
+      this.grpSon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.grpSon.Name = "grpSon";
-      this.grpSon.Size = new System.Drawing.Size(125, 81);
+      this.grpSon.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.grpSon.Size = new System.Drawing.Size(106, 66);
       this.grpSon.TabIndex = 9;
       this.grpSon.TabStop = false;
       this.grpSon.Text = "Musique et Son";
       // 
       // Options
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(282, 255);
+      this.ClientSize = new System.Drawing.Size(212, 207);
+      this.ControlBox = false;
       this.Controls.Add(this.grpSon);
       this.Controls.Add(this.grpGrille);
       this.Controls.Add(this.Cancel);
       this.Controls.Add(this.OK);
+      this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.Name = "Options";
       this.Text = "Options";
       ((System.ComponentModel.ISupportInitialize)(this.nbLignesOptions)).EndInit();

@@ -63,9 +63,29 @@ namespace TP3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ChocoDioForTetris {
+            get {
+                object obj = ResourceManager.GetObject("ChocoDioForTetris", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ChocoForTetris {
             get {
                 object obj = ResourceManager.GetObject("ChocoForTetris", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ChocoUmiForTetris {
+            get {
+                object obj = ResourceManager.GetObject("ChocoUmiForTetris", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
