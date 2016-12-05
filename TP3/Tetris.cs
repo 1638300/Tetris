@@ -13,7 +13,6 @@ namespace TP3
     {
       InitializeComponent();
     }
-
     #region Code fourni
 
     // Représentation visuelles du jeu en mémoire. Ajouter.
