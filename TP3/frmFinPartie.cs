@@ -31,7 +31,7 @@ namespace TP3
 
       for (int i = 0; i < pctChaquePieces.Length; i++)
       {
-        if(NbChaquePieces[i] != 0)
+        if(NbChaquePieces[i] > 0)
         {
           pctChaquePieces[i] = ((float)NbChaquePieces[i] / NbPiecesTotal) * 100;
         }
@@ -48,13 +48,13 @@ namespace TP3
       nbZ.Text = NbChaquePieces[6].ToString();
 
       //Pourcentage Chaques Pièces
-      pctCarre.Text = pctChaquePieces[0].ToString(".##") + "%";
-      pctLigne.Text = pctChaquePieces[1].ToString(".##") + "%";
-      pctT.Text = pctChaquePieces[2].ToString(".##") + "%";
-      pctL.Text = pctChaquePieces[3].ToString(".##") + "%";
-      pctJ.Text = pctChaquePieces[4].ToString(".##") + "%";
-      pctS.Text = pctChaquePieces[5].ToString(".##") + "%";
-      pctZ.Text = pctChaquePieces[6].ToString(".##") + "%";
+      pctCarre.Text = pctChaquePieces[0].ToString("0.##") + "%";
+      pctLigne.Text = pctChaquePieces[1].ToString("0.##") + "%";
+      pctT.Text = pctChaquePieces[2].ToString("0.##") + "%";
+      pctL.Text = pctChaquePieces[3].ToString("0.##") + "%";
+      pctJ.Text = pctChaquePieces[4].ToString("0.##") + "%";
+      pctS.Text = pctChaquePieces[5].ToString("0.##") + "%";
+      pctZ.Text = pctChaquePieces[6].ToString("0.##") + "%";
     }
   }
 }
