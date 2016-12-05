@@ -941,7 +941,7 @@ namespace TP3
     {
       frmFinPartie finPartie = new frmFinPartie();
       descenteBloc.Enabled = false;
-      finPartie.SetTempsJeu(lblTempsEcoule.Text);
+      finPartie.SetStats(lblTempsEcoule.Text, tabComptePieces);
       musique.Stop();
       finPartie.ShowDialog();
 
@@ -958,6 +958,10 @@ namespace TP3
     void RecommencerPartie()
     {
       //Réinitialisation des données de jeu
+      for (int i = 0; i < tabComptePieces.Length; i++)
+      {
+        tabComptePieces[i] = 0;
+      }
       nbPointsCourant = 0;
       nbPoints.Text = "0";
       tempsDebutProgramme = DateTime.Now;

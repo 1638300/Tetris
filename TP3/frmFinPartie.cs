@@ -17,9 +17,44 @@ namespace TP3
       InitializeComponent();
     }
 
-    public void SetTempsJeu(string temps)
+    public void SetStats(string temps, int[] NbChaquePieces)
     {
+      float[] pctChaquePieces = new float[NbChaquePieces.Length];
+      int NbPiecesTotal = 0;
       lblTemps.Text = temps;
+
+      for (int i = 0; i < NbChaquePieces.Length; i++)
+      {
+        pctChaquePieces[i] = 0.00f;
+        NbPiecesTotal = NbPiecesTotal + NbChaquePieces[i];
+      }
+
+      for (int i = 0; i < pctChaquePieces.Length; i++)
+      {
+        if(NbChaquePieces[i] != 0)
+        {
+          pctChaquePieces[i] = ((float)NbChaquePieces[i] / NbPiecesTotal) * 100;
+        }
+      }
+
+      //Affichage
+      //Nombre Chaques Pièces
+      nbCarre.Text = NbChaquePieces[0].ToString();
+      nbLigne.Text = NbChaquePieces[1].ToString();
+      nbT.Text = NbChaquePieces[2].ToString();
+      nbL.Text = NbChaquePieces[3].ToString();
+      nbJ.Text = NbChaquePieces[4].ToString();
+      nbS.Text = NbChaquePieces[5].ToString();
+      nbZ.Text = NbChaquePieces[6].ToString();
+
+      //Pourcentage Chaques Pièces
+      pctCarre.Text = pctChaquePieces[0].ToString(".##") + "%";
+      pctLigne.Text = pctChaquePieces[1].ToString(".##") + "%";
+      pctT.Text = pctChaquePieces[2].ToString(".##") + "%";
+      pctL.Text = pctChaquePieces[3].ToString(".##") + "%";
+      pctJ.Text = pctChaquePieces[4].ToString(".##") + "%";
+      pctS.Text = pctChaquePieces[5].ToString(".##") + "%";
+      pctZ.Text = pctChaquePieces[6].ToString(".##") + "%";
     }
   }
 }
