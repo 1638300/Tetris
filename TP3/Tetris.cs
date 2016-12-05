@@ -434,12 +434,8 @@ namespace TP3
         positionXRelative[3] = 1;
         tabComptePieces[6]++;
       }
-      bool peutCreerBloc = true;
-      for (int i = 0; i < positionXRelative.Length; i++)
-      {
-        peutCreerBloc = peutCreerBloc && tabLogique[ligneCourante + positionYRelative[i], colonneCourante + positionXRelative[i]] != TypeBloc.Gele;
-      }
-      
+      bool peutCreerBloc = DeterminerSiPartieTerminee();
+
       if (peutCreerBloc == true)
       {
         MettreAJourPositionBlocDansTabLogique();
@@ -450,6 +446,16 @@ namespace TP3
       {
         AfficherEcranFinDePartie();
       }
+    }
+    bool DeterminerSiPartieTerminee()
+    {
+      bool peutCreerBloc = true;
+      for (int i = 0; i < positionXRelative.Length; i++)
+      {
+        peutCreerBloc = peutCreerBloc && tabLogique[ligneCourante + positionYRelative[i], colonneCourante + positionXRelative[i]] != TypeBloc.Gele;
+      }
+
+      return peutCreerBloc;
     }
     void GererTypeBlocs()
     {
@@ -638,7 +644,7 @@ namespace TP3
     void AfficherBlocAVenir4()
     {
       EffacerBlocVenir4();
-      TypeBloc blocVenir1 = blocAVenir[1];
+      TypeBloc blocVenir1 = blocAVenir[4];
       if (blocVenir1 == TypeBloc.Carre)
       {
         ImagesBlocAVenir4[0, 0].BackColor = Color.Yellow;
@@ -713,29 +719,37 @@ namespace TP3
       {
         DetruireBlocCourant();
         MettreAJourAffichageCourant();
-        int temp = 0;
-        for (int i = 0; i < positionXRelative.Length; i++)
-        {
-          temp = -positionXRelative[i];
-          positionXRelative[i] = positionYRelative[i];
-          positionYRelative[i] = temp;
-        }
+        GererPositionRelativeAntiHoraire();
       }
       else if (deplacement == mouvement.RotationHoraire)
       {
         DetruireBlocCourant();
         MettreAJourAffichageCourant();
-        int temp = 0;
-        for (int i = 0; i < positionXRelative.Length; i++)
-        {
-          temp = -positionYRelative[i];
-          positionYRelative[i] = positionXRelative[i];
-          positionXRelative[i] = temp;
-        }
+        GererPositionRelativeHoraire();
       }
       MettreAJourPositionBlocDansTabLogique();
       AfficherBloc();
 
+    }
+    void GererPositionRelativeAntiHoraire()
+    {
+      int temp = 0;
+      for (int i = 0; i < positionXRelative.Length; i++)
+      {
+        temp = -positionXRelative[i];
+        positionXRelative[i] = positionYRelative[i];
+        positionYRelative[i] = temp;
+      }
+    }
+    void GererPositionRelativeHoraire()
+    {
+      int temp = 0;
+      for (int i = 0; i < positionXRelative.Length; i++)
+      {
+        temp = -positionYRelative[i];
+        positionYRelative[i] = positionXRelative[i];
+        positionXRelative[i] = temp;
+      }
     }
     bool VerifierDeplacementPossible()
     {
@@ -986,16 +1000,24 @@ namespace TP3
     /// </summary>
     void ExecuterTestsUnitaires()
     {
+      //Test Yannick
       ExecuterTestRetraitLigneSeul();
       ExecuterTestRetraitLigneSeulEtDecalage();
       ExecuterTestRetrait2LignesConsecutives();
       ExecuterTestRetrait2LignesNonConsecutives();
       ExecuterTestRetrait3Lignes();
       ExecuterTestRetrait4Lignes();
-      // A compléter...
+
+      //Test Alek
+      ExecuterTestRotationCentre();
+      ExecuterTestRotationGauche();
+      ExecuterTestRotationDroite();
+      ExecuterTestRotationAvecBlocsGeles();
+      ExecuterTestPartieTerminee();
+      ExecuterTestPartieNonTerminee();
     }
 
-    // A renommer et commenter!
+    // Test Yannick
     void ExecuterTestRetraitLigneSeul()
     {
       // Mise en place des données du test
@@ -1128,6 +1150,246 @@ namespace TP3
         Debug.Assert(tabLogique[tabLogique.GetLength(0) - 4, j] == TypeBloc.None);
       }
       // Clean-up
+      InitialiserTableau();
+    }
+
+    //Test Alek
+    void ExecuterTestRotationCentre()
+    {
+      //-----Initialiser les données de test-----
+
+      //Initialiser la position dans le tableau
+      colonneCourante = tabLogique.GetLength(1) / 2 - 1;
+      ligneCourante = tabLogique.GetLength(0) / 2 - 1;
+
+      //Initialiser mouvement
+      deplacement = mouvement.RotationAntihoraire;
+
+      //Création d'un bloc (Type Ligne Verticale)
+      bloc = TypeBloc.Ligne;
+      positionYRelative[0] = 0;
+      positionXRelative[0] = -1;
+      positionYRelative[1] = 0;
+      positionXRelative[1] = 0;
+      positionYRelative[2] = 0;
+      positionXRelative[2] = 1;
+      positionYRelative[3] = 0;
+      positionXRelative[3] = 2;
+
+      //-----Fin initialiser données de test-----
+
+      //Effectuer les fonctions du test
+      if (VerifierDeplacementPossible())
+        GererPositionRelativeAntiHoraire();
+
+      //Validation des résultats (X devient Y, Y devient -X)
+      Debug.Assert(positionYRelative[0] == 1);
+      Debug.Assert(positionXRelative[0] == 0);
+      Debug.Assert(positionYRelative[1] == 0);
+      Debug.Assert(positionXRelative[1] == 0);
+      Debug.Assert(positionYRelative[2] == -1);
+      Debug.Assert(positionXRelative[2] == 0);
+      Debug.Assert(positionYRelative[3] == -2);
+      Debug.Assert(positionXRelative[3] == 0);
+
+      //Clean-up
+      InitialiserTableau();
+    }
+    void ExecuterTestRotationGauche()
+    {
+      //-----Initialiser les données de test-----
+
+      //Initialiser la position dans le tableau
+      colonneCourante = 0;
+      ligneCourante = tabLogique.GetLength(0) / 2 - 1;
+
+      //Initialiser mouvement
+      deplacement = mouvement.RotationAntihoraire;
+
+      //Création d'un bloc (Type Ligne Verticale)
+      bloc = TypeBloc.Ligne;
+      positionYRelative[0] = 1;
+      positionXRelative[0] = 0;
+      positionYRelative[1] = 0;
+      positionXRelative[1] = 0;
+      positionYRelative[2] = -1;
+      positionXRelative[2] = 0;
+      positionYRelative[3] = -2;
+      positionXRelative[3] = 0;
+
+      //-----Fin initialiser données de test-----
+
+      //Effectuer les fonctions du test
+      if (VerifierDeplacementPossible())
+        GererPositionRelativeAntiHoraire();
+
+      //Validation des résultats (X devient Y, Y devient -X)
+      Debug.Assert(positionYRelative[0] == 1);
+      Debug.Assert(positionXRelative[0] == 0);
+      Debug.Assert(positionYRelative[1] == 0);
+      Debug.Assert(positionXRelative[1] == 0);
+      Debug.Assert(positionYRelative[2] == -1);
+      Debug.Assert(positionXRelative[2] == 0);
+      Debug.Assert(positionYRelative[3] == -2);
+      Debug.Assert(positionXRelative[3] == 0);
+
+      //Clean-up
+      InitialiserTableau();
+    }
+    void ExecuterTestRotationDroite()
+    {
+      //-----Initialiser les données de test-----
+
+      //Initialiser la position dans le tableau
+      colonneCourante = tabLogique.GetLength(1) - 1;
+      ligneCourante = tabLogique.GetLength(0) / 2 - 1;
+
+      //Initialiser mouvement
+      deplacement = mouvement.RotationAntihoraire;
+
+      //Création d'un bloc (Type Ligne Verticale)
+      bloc = TypeBloc.Ligne;
+      positionYRelative[0] = 1;
+      positionXRelative[0] = 0;
+      positionYRelative[1] = 0;
+      positionXRelative[1] = 0;
+      positionYRelative[2] = -1;
+      positionXRelative[2] = 0;
+      positionYRelative[3] = -2;
+      positionXRelative[3] = 0;
+
+      //-----Fin initialiser données de test-----
+
+      //Effectuer les fonctions du test
+      if (VerifierDeplacementPossible())
+        GererPositionRelativeAntiHoraire();
+
+      //Validation des résultats (X devient Y, Y devient -X)
+      Debug.Assert(positionYRelative[0] == 1);
+      Debug.Assert(positionXRelative[0] == 0);
+      Debug.Assert(positionYRelative[1] == 0);
+      Debug.Assert(positionXRelative[1] == 0);
+      Debug.Assert(positionYRelative[2] == -1);
+      Debug.Assert(positionXRelative[2] == 0);
+      Debug.Assert(positionYRelative[3] == -2);
+      Debug.Assert(positionXRelative[3] == 0);
+
+      //Clean-up
+      InitialiserTableau();
+    }
+    void ExecuterTestRotationAvecBlocsGeles()
+    {
+      //-----Initialiser les données de test-----
+
+      //Initialiser la position dans le tableau
+      colonneCourante = tabLogique.GetLength(1) - 1;
+      ligneCourante = tabLogique.GetLength(0) / 2 - 1;
+
+      //Initialiser le tableau de blocs gelés
+      for (int j = 0; j < tabLogique.GetLength(1); j++)
+      {
+        tabLogique[0, j] = TypeBloc.Gele;
+        if (j > 0 + 1)
+        {
+          tabLogique[tabLogique.GetLength(0) - 2, j] = TypeBloc.Gele;
+        }
+      }
+
+      //Initialiser mouvement
+      deplacement = mouvement.RotationAntihoraire;
+
+      //Création d'un bloc (Type Ligne Verticale)
+      bloc = TypeBloc.Ligne;
+      positionYRelative[0] = 1;
+      positionXRelative[0] = 0;
+      positionYRelative[1] = 0;
+      positionXRelative[1] = 0;
+      positionYRelative[2] = -1;
+      positionXRelative[2] = 0;
+      positionYRelative[3] = -2;
+      positionXRelative[3] = 0;
+
+      //-----Fin initialiser données de test-----
+
+      //Effectuer les fonctions du test
+      if (VerifierDeplacementPossible())
+        GererPositionRelativeAntiHoraire();
+
+      //Validation des résultats (X devient Y, Y devient -X)
+      Debug.Assert(positionYRelative[0] == 1);
+      Debug.Assert(positionXRelative[0] == 0);
+      Debug.Assert(positionYRelative[1] == 0);
+      Debug.Assert(positionXRelative[1] == 0);
+      Debug.Assert(positionYRelative[2] == -1);
+      Debug.Assert(positionXRelative[2] == 0);
+      Debug.Assert(positionYRelative[3] == -2);
+      Debug.Assert(positionXRelative[3] == 0);
+
+      //Clean-up
+      InitialiserTableau();
+    }
+    void ExecuterTestPartieTerminee()
+    {
+      //Initialiser les données de test
+
+      //Initialiser la position dans tableau
+      colonneCourante = tabLogique.GetLength(1) / 2 - 1;
+      ligneCourante = 2;
+
+      //Initialiser le tableau de blocs gelés
+      for (int j = 0; j < tabLogique.GetLength(1); j++)
+      {
+        tabLogique[0, j] = TypeBloc.Gele;
+        if (j > 0 + 1)
+        {
+          tabLogique[tabLogique.GetLength(0) - 2, j] = TypeBloc.Gele;
+        }
+      }
+
+      //Création d'un bloc (Type Ligne Verticale)
+      bloc = TypeBloc.Ligne;
+      positionYRelative[0] = 1;
+      positionXRelative[0] = 0;
+      positionYRelative[1] = 0;
+      positionXRelative[1] = 0;
+      positionYRelative[2] = -1;
+      positionXRelative[2] = 0;
+      positionYRelative[3] = -2;
+      positionXRelative[3] = 0;
+
+      //Exécuter la fonction à tester
+      bool testPeutContinuer = DeterminerSiPartieTerminee();
+
+      //Effectuer les vérifications
+      Debug.Assert(testPeutContinuer == false);
+
+      //Clean-up
+      InitialiserTableau();
+    }
+    void ExecuterTestPartieNonTerminee()
+    {
+      //Initialiser les données de test
+      colonneCourante = tabLogique.GetLength(1) / 2 - 1;
+      ligneCourante = 2;
+
+      //Création d'un bloc (Type Ligne Verticale)
+      bloc = TypeBloc.Ligne;
+      positionYRelative[0] = 1;
+      positionXRelative[0] = 0;
+      positionYRelative[1] = 0;
+      positionXRelative[1] = 0;
+      positionYRelative[2] = -1;
+      positionXRelative[2] = 0;
+      positionYRelative[3] = -2;
+      positionXRelative[3] = 0;
+
+      //Exécuter la fonction à tester
+      bool testPeutContinuer = DeterminerSiPartieTerminee();
+
+      //Effectuer les vérifications
+      Debug.Assert(testPeutContinuer == true);
+
+      //Clean-up
       InitialiserTableau();
     }
 
