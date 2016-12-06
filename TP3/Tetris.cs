@@ -244,7 +244,6 @@ namespace TP3
         }
       }
     }
-
     void run()
     {
 
@@ -839,6 +838,10 @@ namespace TP3
       }
       return peutBouger;
     }
+    /// <summary>dans le tableau tabLogique
+    /// Remplace tous les valeurs en x d'une ligne donnée (en y) par la valeur TypeBLoc None dans le tableau tabLogique
+    /// </summary>
+    /// <param name="positionLigne"> Un entier qui représente une ligne en y du tableau tabLogique </param>
     void DetruireLigneCompleteLogique(int positionLigne)
     {
       for (int j = 0; j < tabLogique.GetLength(1); j++)
@@ -846,6 +849,10 @@ namespace TP3
         tabLogique[positionLigne, j] = TypeBloc.None;
       }
     }
+    /// <summary>
+    /// Remplace tous les couleurs de fonds des picturesBox en x d'une ligne donnée (y) par la couleur noir dans le tableau de picturesBox toutesImagesVisuelles
+    /// </summary>
+    /// <param name="positionLigne"> Un entier qui représente une ligne en y du tableau toutesImagesVisuelles </param>
     void DetruireLigneCompleteAffichage(int positionLigne)
     {
       for (int j = 0; j < tabLogique.GetLength(1); j++)
@@ -853,6 +860,11 @@ namespace TP3
         toutesImagesVisuelles[positionLigne, j].BackColor = Color.Black;
       }
     }
+    /// <summary>
+    /// Décaler les valeurs contenues de toutes les lignes dans le tableau tabLogique qui se situent en haut de la ligne indiqué en paramètre de une ligne vers le bas 
+    /// et remplace tous les valeurs de la ligne en haut du tableau (le y à 0) pour TypeBloc None
+    /// </summary>
+    /// <param name="positionLigne">Un entier qui représente une ligne en y du tableau tabLogique</param>
     void DecalerLigneLogique(int positionLigne)
     {
       for (int i = positionLigne; i > 0; i--)
@@ -867,6 +879,11 @@ namespace TP3
         tabLogique[0, j] = TypeBloc.None;
       }
     }
+    /// <summary>
+    /// Décaler les couleurs dans toutes les lignes dans le tableau tabLogique qui se situent en haut de la ligne indiqué en paramètre de une ligne vers le bas 
+    /// et remplace tous les couleurs de la ligne en haut du tableau (le y à 0) pour la couleur noire
+    /// </summary>
+    /// <param name="positionLigne">Un entier qui représente une ligne en y du tableau tabLogique</param>
     void DecalerLigneAffichage(int positionLigne)
     {
       for (int i = positionLigne; i > 0; i--)
@@ -881,6 +898,13 @@ namespace TP3
         toutesImagesVisuelles[0, j].BackColor = Color.Black;
       }
     }
+    /// <summary>
+    /// Faire tous les actions s'apportant à la destruction d'une ligne dans le jeu: 
+    /// vérifier la completion d'une ligne en appellant la fonction GererLigneCompleteAffichage et la fonction GererLigneCompleteLogique,
+    /// s'occuper des effets visuels et audios d'une completion de ligne,
+    /// changer le pointage en appellant la fonction GererPointage et
+    /// s'occuper de l'effet sonore de la création d'un bloc (car cette fonction ce fait appeller au début du procéssus de création de bloc)
+    /// </summary>
     void GererLigneComplete()
     {
       GererLigneCompleteAffichage();
@@ -902,6 +926,12 @@ namespace TP3
         explosion.controls.play();
       }
     }
+    /// <summary>
+    /// Gerer la vérification de la completion d'une ligne dans le tableau tabLogique ainsi 
+    /// que d'appeler la fonction qui s'occupe de la destrucion des lignes (DetruireLigneCompleteLogique) et 
+    /// la fonction qui s'occupe du décalage des lignes (DecalerLigneLogique)
+    /// </summary>
+    /// <returns>Un entier représentant le nombre de lignes qui a été détruit</returns>
     int GererLigneCompleteLogique()
     {
       int nbLigneDetruite = 0;
@@ -925,6 +955,11 @@ namespace TP3
       }
       return nbLigneDetruite;
     }
+    /// <summary>
+    /// Gerer la vérification de la completion d'une ligne dans le tableau toutesImagesVisuelles ainsi 
+    /// que d'appeler la fonction qui s'occupe de la destrucion des lignes (DetruireLigneCompleteAffichage) et 
+    /// la fonction qui s'occupe du décalage des lignes (DecalerLigneAffichage)
+    /// </summary>
     void GererLigneCompleteAffichage()
     {
       bool ligneComplete = true;
@@ -945,6 +980,7 @@ namespace TP3
         }
       }
     }
+      
     void GererPointage(int nbLigneDetruite)
     {
       nbPointsCourant += Math.Pow(5, nbLigneDetruite);

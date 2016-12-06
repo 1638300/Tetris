@@ -108,14 +108,6 @@
     <Content Include="Resources\Blast-SoundBible.com-2068539061.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\ChocoDioForTetris.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\ChocoForTetris.jpg" />
-    <Content Include="Resources\ChocoUmiForTetris.jpg" />
-    <Content Include="Resources\DragonForce_-_Through_the_Fire_and_Flames_HD_Offic.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="BTWMPPlugin">
