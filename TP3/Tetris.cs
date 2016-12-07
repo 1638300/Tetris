@@ -80,7 +80,7 @@ namespace TP3
       InitialiserSurfaceBlocAVenir2(4, 4);
       InitialiserSurfaceBlocAVenir3(4, 4);
       InitialiserSurfaceBlocAVenir4(4, 4);
-      run();
+      Run();
     }
 
     private void InitialiserSurfaceDeJeu(int nbLignes, int nbCols)
@@ -244,7 +244,7 @@ namespace TP3
         }
       }
     }
-    void run()
+    void Run()
     {
 
       if (musiqueActive)
@@ -461,7 +461,7 @@ namespace TP3
       {
         blocAVenir[i] = blocAVenir[i + 1];
       }
-      bloc = blocAVenir[0]; //TypeBloc.Carre; 
+      bloc = blocAVenir[0]; 
       blocAVenir[blocAVenir.Length - 1] = (TypeBloc)rnd.Next(2, 9);
       AfficherBlocAVenir1();
       AfficherBlocAVenir2();
@@ -980,7 +980,9 @@ namespace TP3
         }
       }
     }
-      
+    /// <summary>
+    /// Calculer et changer le pointage de la partie
+    /// </summary>
     void GererPointage(int nbLigneDetruite)
     {
       nbPointsCourant += Math.Pow(5, nbLigneDetruite);
@@ -1016,8 +1018,11 @@ namespace TP3
       tempsDebutProgramme = DateTime.Now;
       //Réinitialiser le tableau
       InitialiserSurfaceDeJeu(nbLignes, nbColonnes);
-      run();
+      Run();
     }
+    /// <summary>
+    /// Jouer la musique si musiqueActive est true
+    /// </summary>
     void GererSon()
     {
       if (musiqueActive)
@@ -1029,11 +1034,51 @@ namespace TP3
       musique.Stop();
       }
     }
-    #region Code à développer
-    /// <summary>
-    /// Faites ici les appels requis pour vos tests unitaires.
-    /// </summary>
-    void ExecuterTestsUnitaires()
+    void EffacerBlocVenir1()
+        {
+            for (int i = 0; i < ImagesBlocAVenir1.GetLength(0); i++)
+            {
+                for (int j = 0; j < ImagesBlocAVenir1.GetLength(1); j++)
+                {
+                    ImagesBlocAVenir1[i, j].BackColor = Color.Black;
+                }
+            }
+        }
+    void EffacerBlocVenir2()
+        {
+            for (int i = 0; i < ImagesBlocAVenir2.GetLength(0); i++)
+            {
+                for (int j = 0; j < ImagesBlocAVenir2.GetLength(1); j++)
+                {
+                    ImagesBlocAVenir2[i, j].BackColor = Color.Black;
+                }
+            }
+        }
+    void EffacerBlocVenir3()
+        {
+            for (int i = 0; i < ImagesBlocAVenir3.GetLength(0); i++)
+            {
+                for (int j = 0; j < ImagesBlocAVenir3.GetLength(1); j++)
+                {
+                    ImagesBlocAVenir3[i, j].BackColor = Color.Black;
+                }
+            }
+        }
+    void EffacerBlocVenir4()
+        {
+            for (int i = 0; i < ImagesBlocAVenir4.GetLength(0); i++)
+            {
+                for (int j = 0; j < ImagesBlocAVenir4.GetLength(1); j++)
+                {
+                    ImagesBlocAVenir4[i, j].BackColor = Color.Black;
+                }
+            }
+        }
+    #region Tests unitaires
+        /// <summary>
+        /// Faites ici les appels requis pour vos tests unitaires.
+        /// </summary>
+        void ExecuterTestsUnitaires()
     {
       //Test Yannick
       ExecuterTestRetraitLigneSeul();
@@ -1430,7 +1475,7 @@ namespace TP3
 
     #endregion
 
-    private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+    private void Tetris_KeyPress(object sender, KeyPressEventArgs e)
     {
       deplacement = mouvement.Rien;
       if (e.KeyChar == 's')
@@ -1475,46 +1520,7 @@ namespace TP3
         deplacement = mouvement.Skip;
       }
     }
-    void EffacerBlocVenir1()
-    {
-      for (int i = 0; i < ImagesBlocAVenir1.GetLength(0); i++)
-      {
-        for (int j = 0; j < ImagesBlocAVenir1.GetLength(1); j++)
-        {
-          ImagesBlocAVenir1[i,j].BackColor = Color.Black;
-        }
-      }
-    }
-    void EffacerBlocVenir2()
-    {
-      for (int i = 0; i < ImagesBlocAVenir2.GetLength(0); i++)
-      {
-        for (int j = 0; j < ImagesBlocAVenir2.GetLength(1); j++)
-        {
-          ImagesBlocAVenir2[i, j].BackColor = Color.Black;
-        }
-      }
-    }
-    void EffacerBlocVenir3()
-    {
-      for (int i = 0; i < ImagesBlocAVenir3.GetLength(0); i++)
-      {
-        for (int j = 0; j < ImagesBlocAVenir3.GetLength(1); j++)
-        {
-          ImagesBlocAVenir3[i, j].BackColor = Color.Black;
-        }
-      }
-    }
-    void EffacerBlocVenir4()
-    {
-      for (int i = 0; i < ImagesBlocAVenir4.GetLength(0); i++)
-      {
-        for (int j = 0; j < ImagesBlocAVenir4.GetLength(1); j++)
-        {
-          ImagesBlocAVenir4[i, j].BackColor = Color.Black;
-        }
-      }
-    }
+
     private void descenteBloc_Tick(object sender, EventArgs e)
     {
       TimeSpan tempsEcoule = (DateTime.Now - tempsDebutProgramme);
@@ -1541,7 +1547,9 @@ namespace TP3
     {
       RecommencerPartie();
     }
-
+    /// <summary>
+    /// Si cliqué, ouvrir uen fenêtre de dialog Options et enregistrer les données qui y sont entrées si le DialogResult de celle-ci est OK
+    /// </summary>
     private void menuItemOptions_Click(object sender, EventArgs e)
     {
       Options optionsDialog = new Options();

@@ -353,7 +353,7 @@
       this.Name = "Tetris";
       this.Text = "Tetris";
       this.Load += new System.EventHandler(this.frmLoad);
-      this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
+      this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tetris_KeyPress);
       this.menuJeu.ResumeLayout(false);
       this.menuJeu.PerformLayout();
       this.boxTemps.ResumeLayout(false);
