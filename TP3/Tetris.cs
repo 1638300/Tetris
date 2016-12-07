@@ -51,7 +51,7 @@ namespace TP3
     TypeBloc bloc; //Le type de bloc en cours du bloc joué
 
     //Données sonores du jeu
-    System.Media.SoundPlayer musique = new System.Media.SoundPlayer("DragonForce_-_Through_the_Fire_and_Flames_HD_Offic.wav"); //La musique du jeu
+    System.Media.SoundPlayer musique = new System.Media.SoundPlayer("Resources//DragonForce_-_Through_the_Fire_and_Flames_HD_Offic.wav"); //La musique du jeu
     WindowsMediaPlayer explosion = new WindowsMediaPlayer(); //Effet sonore de placement de bloc
     WindowsMediaPlayer ligneDetruite = new WindowsMediaPlayer(); //Effet sonor de destruction de ligne et début de partie
     //</Yannick>
@@ -390,14 +390,14 @@ namespace TP3
         if (effetsSonoresActifs) //Si les effets sonores sont activés
         {
           //Jouer le son de détruire une ligne
-          ligneDetruite.URL = "Anime WOW Sound Effect.mp3";
+          ligneDetruite.URL = "Resources//Anime WOW Sound Effect.mp3";
           ligneDetruite.controls.play();
         }
       }
       if (effetsSonoresActifs) //Si les effets sonores sont activés
       {
         //Jouer le son de détruire une ligne
-        explosion.URL = "Blast-SoundBible.com-2068539061.mp3";
+        explosion.URL = "Resources//Blast-SoundBible.com-2068539061.mp3";
         explosion.controls.play();
       }
     } //done
