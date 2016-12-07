@@ -58,7 +58,6 @@ namespace TP3
     bool musiqueActive = true;
     //Mouvement que le joueur fait
     mouvement deplacement;
-
     DateTime timer = new DateTime();
     DateTime tempsDebutProgramme;
     double nbPointsCourant = 0;
@@ -72,7 +71,6 @@ namespace TP3
     /// <param name="e"></param>
     private void frmLoad(object sender, EventArgs e)
     {
-      // Ne pas oublier de mettre en place les valeurs nécessaires à une partie.
       tempsDebutProgramme = DateTime.Now;
       ExecuterTestsUnitaires();
       InitialiserSurfaceDeJeu(nbLignes, nbColonnes);
@@ -143,7 +141,7 @@ namespace TP3
           tabBlocAVenir1.Controls.Add(newPictureBox, j, i);
         }
       }
-    }
+    } //Source : TP3 code fourni
     private void InitialiserSurfaceBlocAVenir2(int nbLignes, int nbCols)
     {
       // Création d'une surface de jeu 4 colonnes x 4 lignes
@@ -173,7 +171,7 @@ namespace TP3
           tabBlocAVenir2.Controls.Add(newPictureBox, j, i);
         }
       }
-    }
+    } //Source : TP3 code fourni
     private void InitialiserSurfaceBlocAVenir3(int nbLignes, int nbCols)
     {
       // Création d'une surface de jeu 4 colonnes x 4 lignes
@@ -203,7 +201,7 @@ namespace TP3
           tabBlocAVenir3.Controls.Add(newPictureBox, j, i);
         }
       }
-    }
+    } //Source : TP3 code fourni
     private void InitialiserSurfaceBlocAVenir4(int nbLignes, int nbCols)
     {
       // Création d'une surface de jeu 4 colonnes x 4 lignes
@@ -233,7 +231,7 @@ namespace TP3
           tabBlocAVenir4.Controls.Add(newPictureBox, j, i);
         }
       }
-    }
+    } //Source : TP3 code fourni
     void InitialiserTableau()
     {
       for (int i = 0; i < tabLogique.GetLength(0); i++)
@@ -850,7 +848,7 @@ namespace TP3
       }
     }
     /// <summary>
-    /// Remplace tous les couleurs de fonds des picturesBox en x d'une ligne donnée (y) par la couleur noir dans le tableau de picturesBox toutesImagesVisuelles
+    /// Remplace tous les couleurs de fonds des picturesBox en x d'une ligne donnée (y) par la couleur noire dans le tableau de picturesBox toutesImagesVisuelles
     /// </summary>
     /// <param name="positionLigne"> Un entier qui représente une ligne en y du tableau toutesImagesVisuelles </param>
     void DetruireLigneCompleteAffichage(int positionLigne)
