@@ -58,7 +58,6 @@ namespace TP3
     bool musiqueActive = true;
     //Mouvement que le joueur fait
     mouvement deplacement;
-
     DateTime timer = new DateTime();
     DateTime tempsDebutProgramme;
     double nbPointsCourant = 0;
@@ -72,7 +71,6 @@ namespace TP3
     /// <param name="e"></param>
     private void frmLoad(object sender, EventArgs e)
     {
-      // Ne pas oublier de mettre en place les valeurs nécessaires à une partie.
       tempsDebutProgramme = DateTime.Now;
       ExecuterTestsUnitaires();
       InitialiserSurfaceDeJeu(nbLignes, nbColonnes);
@@ -80,7 +78,7 @@ namespace TP3
       InitialiserSurfaceBlocAVenir2(4, 4);
       InitialiserSurfaceBlocAVenir3(4, 4);
       InitialiserSurfaceBlocAVenir4(4, 4);
-      run();
+      Run();
     }
 
     private void InitialiserSurfaceDeJeu(int nbLignes, int nbCols)
@@ -143,7 +141,7 @@ namespace TP3
           tabBlocAVenir1.Controls.Add(newPictureBox, j, i);
         }
       }
-    }
+    } //Source : TP3 code fourni
     private void InitialiserSurfaceBlocAVenir2(int nbLignes, int nbCols)
     {
       // Création d'une surface de jeu 4 colonnes x 4 lignes
@@ -173,7 +171,7 @@ namespace TP3
           tabBlocAVenir2.Controls.Add(newPictureBox, j, i);
         }
       }
-    }
+    } //Source : TP3 code fourni
     private void InitialiserSurfaceBlocAVenir3(int nbLignes, int nbCols)
     {
       // Création d'une surface de jeu 4 colonnes x 4 lignes
@@ -203,7 +201,7 @@ namespace TP3
           tabBlocAVenir3.Controls.Add(newPictureBox, j, i);
         }
       }
-    }
+    } //Source : TP3 code fourni
     private void InitialiserSurfaceBlocAVenir4(int nbLignes, int nbCols)
     {
       // Création d'une surface de jeu 4 colonnes x 4 lignes
@@ -233,7 +231,7 @@ namespace TP3
           tabBlocAVenir4.Controls.Add(newPictureBox, j, i);
         }
       }
-    }
+    } //Source : TP3 code fourni
     void InitialiserTableau()
     {
       for (int i = 0; i < tabLogique.GetLength(0); i++)
@@ -244,8 +242,7 @@ namespace TP3
         }
       }
     }
-
-    void run()
+    void Run()
     {
 
       if (musiqueActive)
@@ -462,7 +459,7 @@ namespace TP3
       {
         blocAVenir[i] = blocAVenir[i + 1];
       }
-      bloc = blocAVenir[0]; //TypeBloc.Carre; 
+      bloc = blocAVenir[0]; 
       blocAVenir[blocAVenir.Length - 1] = (TypeBloc)rnd.Next(2, 9);
       AfficherBlocAVenir1();
       AfficherBlocAVenir2();
@@ -839,6 +836,10 @@ namespace TP3
       }
       return peutBouger;
     }
+    /// <summary>dans le tableau tabLogique
+    /// Remplace tous les valeurs en x d'une ligne donnée (en y) par la valeur TypeBLoc None dans le tableau tabLogique
+    /// </summary>
+    /// <param name="positionLigne"> Un entier qui représente une ligne en y du tableau tabLogique </param>
     void DetruireLigneCompleteLogique(int positionLigne)
     {
       for (int j = 0; j < tabLogique.GetLength(1); j++)
@@ -846,6 +847,10 @@ namespace TP3
         tabLogique[positionLigne, j] = TypeBloc.None;
       }
     }
+    /// <summary>
+    /// Remplace tous les couleurs de fonds des picturesBox en x d'une ligne donnée (y) par la couleur noire dans le tableau de picturesBox toutesImagesVisuelles
+    /// </summary>
+    /// <param name="positionLigne"> Un entier qui représente une ligne en y du tableau toutesImagesVisuelles </param>
     void DetruireLigneCompleteAffichage(int positionLigne)
     {
       for (int j = 0; j < tabLogique.GetLength(1); j++)
@@ -853,6 +858,11 @@ namespace TP3
         toutesImagesVisuelles[positionLigne, j].BackColor = Color.Black;
       }
     }
+    /// <summary>
+    /// Décaler les valeurs contenues de toutes les lignes dans le tableau tabLogique qui se situent en haut de la ligne indiqué en paramètre de une ligne vers le bas 
+    /// et remplace tous les valeurs de la ligne en haut du tableau (le y à 0) pour TypeBloc None
+    /// </summary>
+    /// <param name="positionLigne">Un entier qui représente une ligne en y du tableau tabLogique</param>
     void DecalerLigneLogique(int positionLigne)
     {
       for (int i = positionLigne; i > 0; i--)
@@ -867,6 +877,11 @@ namespace TP3
         tabLogique[0, j] = TypeBloc.None;
       }
     }
+    /// <summary>
+    /// Décaler les couleurs dans toutes les lignes dans le tableau tabLogique qui se situent en haut de la ligne indiqué en paramètre de une ligne vers le bas 
+    /// et remplace tous les couleurs de la ligne en haut du tableau (le y à 0) pour la couleur noire
+    /// </summary>
+    /// <param name="positionLigne">Un entier qui représente une ligne en y du tableau tabLogique</param>
     void DecalerLigneAffichage(int positionLigne)
     {
       for (int i = positionLigne; i > 0; i--)
@@ -881,6 +896,13 @@ namespace TP3
         toutesImagesVisuelles[0, j].BackColor = Color.Black;
       }
     }
+    /// <summary>
+    /// Faire tous les actions s'apportant à la destruction d'une ligne dans le jeu: 
+    /// vérifier la completion d'une ligne en appellant la fonction GererLigneCompleteAffichage et la fonction GererLigneCompleteLogique,
+    /// s'occuper des effets visuels et audios d'une completion de ligne,
+    /// changer le pointage en appellant la fonction GererPointage et
+    /// s'occuper de l'effet sonore de la création d'un bloc (car cette fonction ce fait appeller au début du procéssus de création de bloc)
+    /// </summary>
     void GererLigneComplete()
     {
       GererLigneCompleteAffichage();
@@ -902,6 +924,12 @@ namespace TP3
         explosion.controls.play();
       }
     }
+    /// <summary>
+    /// Gerer la vérification de la completion d'une ligne dans le tableau tabLogique ainsi 
+    /// que d'appeler la fonction qui s'occupe de la destrucion des lignes (DetruireLigneCompleteLogique) et 
+    /// la fonction qui s'occupe du décalage des lignes (DecalerLigneLogique)
+    /// </summary>
+    /// <returns>Un entier représentant le nombre de lignes qui a été détruit</returns>
     int GererLigneCompleteLogique()
     {
       int nbLigneDetruite = 0;
@@ -925,6 +953,11 @@ namespace TP3
       }
       return nbLigneDetruite;
     }
+    /// <summary>
+    /// Gerer la vérification de la completion d'une ligne dans le tableau toutesImagesVisuelles ainsi 
+    /// que d'appeler la fonction qui s'occupe de la destrucion des lignes (DetruireLigneCompleteAffichage) et 
+    /// la fonction qui s'occupe du décalage des lignes (DecalerLigneAffichage)
+    /// </summary>
     void GererLigneCompleteAffichage()
     {
       bool ligneComplete = true;
@@ -945,6 +978,9 @@ namespace TP3
         }
       }
     }
+    /// <summary>
+    /// Calculer et changer le pointage de la partie
+    /// </summary>
     void GererPointage(int nbLigneDetruite)
     {
       nbPointsCourant += Math.Pow(5, nbLigneDetruite);
@@ -980,8 +1016,11 @@ namespace TP3
       tempsDebutProgramme = DateTime.Now;
       //Réinitialiser le tableau
       InitialiserSurfaceDeJeu(nbLignes, nbColonnes);
-      run();
+      Run();
     }
+    /// <summary>
+    /// Jouer la musique si musiqueActive est true
+    /// </summary>
     void GererSon()
     {
       if (musiqueActive)
@@ -993,11 +1032,51 @@ namespace TP3
       musique.Stop();
       }
     }
-    #region Code à développer
-    /// <summary>
-    /// Faites ici les appels requis pour vos tests unitaires.
-    /// </summary>
-    void ExecuterTestsUnitaires()
+    void EffacerBlocVenir1()
+        {
+            for (int i = 0; i < ImagesBlocAVenir1.GetLength(0); i++)
+            {
+                for (int j = 0; j < ImagesBlocAVenir1.GetLength(1); j++)
+                {
+                    ImagesBlocAVenir1[i, j].BackColor = Color.Black;
+                }
+            }
+        }
+    void EffacerBlocVenir2()
+        {
+            for (int i = 0; i < ImagesBlocAVenir2.GetLength(0); i++)
+            {
+                for (int j = 0; j < ImagesBlocAVenir2.GetLength(1); j++)
+                {
+                    ImagesBlocAVenir2[i, j].BackColor = Color.Black;
+                }
+            }
+        }
+    void EffacerBlocVenir3()
+        {
+            for (int i = 0; i < ImagesBlocAVenir3.GetLength(0); i++)
+            {
+                for (int j = 0; j < ImagesBlocAVenir3.GetLength(1); j++)
+                {
+                    ImagesBlocAVenir3[i, j].BackColor = Color.Black;
+                }
+            }
+        }
+    void EffacerBlocVenir4()
+        {
+            for (int i = 0; i < ImagesBlocAVenir4.GetLength(0); i++)
+            {
+                for (int j = 0; j < ImagesBlocAVenir4.GetLength(1); j++)
+                {
+                    ImagesBlocAVenir4[i, j].BackColor = Color.Black;
+                }
+            }
+        }
+    #region Tests unitaires
+        /// <summary>
+        /// Faites ici les appels requis pour vos tests unitaires.
+        /// </summary>
+        void ExecuterTestsUnitaires()
     {
       //Test Yannick
       ExecuterTestRetraitLigneSeul();
@@ -1394,7 +1473,7 @@ namespace TP3
 
     #endregion
 
-    private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+    private void Tetris_KeyPress(object sender, KeyPressEventArgs e)
     {
       deplacement = mouvement.Rien;
       if (e.KeyChar == 's')
@@ -1439,46 +1518,7 @@ namespace TP3
         deplacement = mouvement.Skip;
       }
     }
-    void EffacerBlocVenir1()
-    {
-      for (int i = 0; i < ImagesBlocAVenir1.GetLength(0); i++)
-      {
-        for (int j = 0; j < ImagesBlocAVenir1.GetLength(1); j++)
-        {
-          ImagesBlocAVenir1[i,j].BackColor = Color.Black;
-        }
-      }
-    }
-    void EffacerBlocVenir2()
-    {
-      for (int i = 0; i < ImagesBlocAVenir2.GetLength(0); i++)
-      {
-        for (int j = 0; j < ImagesBlocAVenir2.GetLength(1); j++)
-        {
-          ImagesBlocAVenir2[i, j].BackColor = Color.Black;
-        }
-      }
-    }
-    void EffacerBlocVenir3()
-    {
-      for (int i = 0; i < ImagesBlocAVenir3.GetLength(0); i++)
-      {
-        for (int j = 0; j < ImagesBlocAVenir3.GetLength(1); j++)
-        {
-          ImagesBlocAVenir3[i, j].BackColor = Color.Black;
-        }
-      }
-    }
-    void EffacerBlocVenir4()
-    {
-      for (int i = 0; i < ImagesBlocAVenir4.GetLength(0); i++)
-      {
-        for (int j = 0; j < ImagesBlocAVenir4.GetLength(1); j++)
-        {
-          ImagesBlocAVenir4[i, j].BackColor = Color.Black;
-        }
-      }
-    }
+
     private void descenteBloc_Tick(object sender, EventArgs e)
     {
       TimeSpan tempsEcoule = (DateTime.Now - tempsDebutProgramme);
@@ -1505,7 +1545,9 @@ namespace TP3
     {
       RecommencerPartie();
     }
-
+    /// <summary>
+    /// Si cliqué, ouvrir uen fenêtre de dialog Options et enregistrer les données qui y sont entrées si le DialogResult de celle-ci est OK
+    /// </summary>
     private void menuItemOptions_Click(object sender, EventArgs e)
     {
       Options optionsDialog = new Options();
