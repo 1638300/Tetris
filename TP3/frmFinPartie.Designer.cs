@@ -36,12 +36,8 @@
       this.lblNbPieces = new System.Windows.Forms.Label();
       this.layoutStats = new System.Windows.Forms.TableLayoutPanel();
       this.layoutNbPiece = new System.Windows.Forms.TableLayoutPanel();
-      this.nbZ = new System.Windows.Forms.Label();
-      this.nbS = new System.Windows.Forms.Label();
-      this.nbJ = new System.Windows.Forms.Label();
-      this.nbL = new System.Windows.Forms.Label();
-      this.nbT = new System.Windows.Forms.Label();
-      this.nbLigne = new System.Windows.Forms.Label();
+      this.layoutPctPiece = new System.Windows.Forms.TableLayoutPanel();
+      this.lblTemps = new System.Windows.Forms.Label();
       this.lblNbCarre = new System.Windows.Forms.Label();
       this.lblNbLigne = new System.Windows.Forms.Label();
       this.lblNbT = new System.Windows.Forms.Label();
@@ -49,15 +45,6 @@
       this.lblNbJ = new System.Windows.Forms.Label();
       this.lblNbS = new System.Windows.Forms.Label();
       this.lblNbZ = new System.Windows.Forms.Label();
-      this.nbCarre = new System.Windows.Forms.Label();
-      this.layoutPctPiece = new System.Windows.Forms.TableLayoutPanel();
-      this.pctZ = new System.Windows.Forms.Label();
-      this.pctS = new System.Windows.Forms.Label();
-      this.pctJ = new System.Windows.Forms.Label();
-      this.pctL = new System.Windows.Forms.Label();
-      this.pctT = new System.Windows.Forms.Label();
-      this.pctLigne = new System.Windows.Forms.Label();
-      this.pctCarre = new System.Windows.Forms.Label();
       this.lblPctCarre = new System.Windows.Forms.Label();
       this.lblPctLigne = new System.Windows.Forms.Label();
       this.lblPctT = new System.Windows.Forms.Label();
@@ -65,7 +52,20 @@
       this.lblPctJ = new System.Windows.Forms.Label();
       this.lblPctS = new System.Windows.Forms.Label();
       this.lblPctZ = new System.Windows.Forms.Label();
-      this.lblTemps = new System.Windows.Forms.Label();
+      this.nbCarre = new System.Windows.Forms.Label();
+      this.nbLigne = new System.Windows.Forms.Label();
+      this.nbT = new System.Windows.Forms.Label();
+      this.nbL = new System.Windows.Forms.Label();
+      this.nbJ = new System.Windows.Forms.Label();
+      this.nbS = new System.Windows.Forms.Label();
+      this.nbZ = new System.Windows.Forms.Label();
+      this.pctCarre = new System.Windows.Forms.Label();
+      this.pctLigne = new System.Windows.Forms.Label();
+      this.pctT = new System.Windows.Forms.Label();
+      this.pctL = new System.Windows.Forms.Label();
+      this.pctJ = new System.Windows.Forms.Label();
+      this.pctS = new System.Windows.Forms.Label();
+      this.pctZ = new System.Windows.Forms.Label();
       this.layoutStats.SuspendLayout();
       this.layoutNbPiece.SuspendLayout();
       this.layoutPctPiece.SuspendLayout();
@@ -189,65 +189,50 @@
       this.layoutNbPiece.Size = new System.Drawing.Size(442, 130);
       this.layoutNbPiece.TabIndex = 7;
       // 
-      // nbZ
+      // layoutPctPiece
       // 
-      this.nbZ.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.nbZ.AutoSize = true;
-      this.nbZ.Location = new System.Drawing.Point(400, 90);
-      this.nbZ.Name = "nbZ";
-      this.nbZ.Size = new System.Drawing.Size(13, 13);
-      this.nbZ.TabIndex = 13;
-      this.nbZ.Text = "0";
+      this.layoutPctPiece.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+      this.layoutPctPiece.ColumnCount = 7;
+      this.layoutPctPiece.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+      this.layoutPctPiece.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+      this.layoutPctPiece.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+      this.layoutPctPiece.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+      this.layoutPctPiece.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+      this.layoutPctPiece.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+      this.layoutPctPiece.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+      this.layoutPctPiece.Controls.Add(this.pctZ, 6, 1);
+      this.layoutPctPiece.Controls.Add(this.pctS, 5, 1);
+      this.layoutPctPiece.Controls.Add(this.pctJ, 4, 1);
+      this.layoutPctPiece.Controls.Add(this.pctL, 3, 1);
+      this.layoutPctPiece.Controls.Add(this.pctT, 2, 1);
+      this.layoutPctPiece.Controls.Add(this.pctLigne, 1, 1);
+      this.layoutPctPiece.Controls.Add(this.pctCarre, 0, 1);
+      this.layoutPctPiece.Controls.Add(this.lblPctCarre, 0, 0);
+      this.layoutPctPiece.Controls.Add(this.lblPctLigne, 1, 0);
+      this.layoutPctPiece.Controls.Add(this.lblPctT, 2, 0);
+      this.layoutPctPiece.Controls.Add(this.lblPctL, 3, 0);
+      this.layoutPctPiece.Controls.Add(this.lblPctJ, 4, 0);
+      this.layoutPctPiece.Controls.Add(this.lblPctS, 5, 0);
+      this.layoutPctPiece.Controls.Add(this.lblPctZ, 6, 0);
+      this.layoutPctPiece.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.layoutPctPiece.Location = new System.Drawing.Point(115, 275);
+      this.layoutPctPiece.Name = "layoutPctPiece";
+      this.layoutPctPiece.RowCount = 2;
+      this.layoutPctPiece.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.layoutPctPiece.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.layoutPctPiece.Size = new System.Drawing.Size(442, 131);
+      this.layoutPctPiece.TabIndex = 8;
       // 
-      // nbS
+      // lblTemps
       // 
-      this.nbS.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.nbS.AutoSize = true;
-      this.nbS.Location = new System.Drawing.Point(335, 90);
-      this.nbS.Name = "nbS";
-      this.nbS.Size = new System.Drawing.Size(13, 13);
-      this.nbS.TabIndex = 12;
-      this.nbS.Text = "0";
-      // 
-      // nbJ
-      // 
-      this.nbJ.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.nbJ.AutoSize = true;
-      this.nbJ.Location = new System.Drawing.Point(273, 90);
-      this.nbJ.Name = "nbJ";
-      this.nbJ.Size = new System.Drawing.Size(13, 13);
-      this.nbJ.TabIndex = 11;
-      this.nbJ.Text = "0";
-      // 
-      // nbL
-      // 
-      this.nbL.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.nbL.AutoSize = true;
-      this.nbL.Location = new System.Drawing.Point(211, 90);
-      this.nbL.Name = "nbL";
-      this.nbL.Size = new System.Drawing.Size(13, 13);
-      this.nbL.TabIndex = 10;
-      this.nbL.Text = "0";
-      // 
-      // nbT
-      // 
-      this.nbT.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.nbT.AutoSize = true;
-      this.nbT.Location = new System.Drawing.Point(149, 90);
-      this.nbT.Name = "nbT";
-      this.nbT.Size = new System.Drawing.Size(13, 13);
-      this.nbT.TabIndex = 9;
-      this.nbT.Text = "0";
-      // 
-      // nbLigne
-      // 
-      this.nbLigne.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.nbLigne.AutoSize = true;
-      this.nbLigne.Location = new System.Drawing.Point(87, 90);
-      this.nbLigne.Name = "nbLigne";
-      this.nbLigne.Size = new System.Drawing.Size(13, 13);
-      this.nbLigne.TabIndex = 8;
-      this.nbLigne.Text = "0";
+      this.lblTemps.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.lblTemps.AutoSize = true;
+      this.lblTemps.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lblTemps.Location = new System.Drawing.Point(239, 31);
+      this.lblTemps.Name = "lblTemps";
+      this.lblTemps.Size = new System.Drawing.Size(194, 73);
+      this.lblTemps.TabIndex = 6;
+      this.lblTemps.Text = "00:00";
       // 
       // lblNbCarre
       // 
@@ -319,120 +304,6 @@
       this.lblNbZ.TabIndex = 6;
       this.lblNbZ.Text = "Z";
       // 
-      // nbCarre
-      // 
-      this.nbCarre.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.nbCarre.AutoSize = true;
-      this.nbCarre.Location = new System.Drawing.Point(25, 90);
-      this.nbCarre.Name = "nbCarre";
-      this.nbCarre.Size = new System.Drawing.Size(13, 13);
-      this.nbCarre.TabIndex = 7;
-      this.nbCarre.Text = "0";
-      // 
-      // layoutPctPiece
-      // 
-      this.layoutPctPiece.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-      this.layoutPctPiece.ColumnCount = 7;
-      this.layoutPctPiece.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-      this.layoutPctPiece.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-      this.layoutPctPiece.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-      this.layoutPctPiece.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-      this.layoutPctPiece.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-      this.layoutPctPiece.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-      this.layoutPctPiece.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-      this.layoutPctPiece.Controls.Add(this.pctZ, 6, 1);
-      this.layoutPctPiece.Controls.Add(this.pctS, 5, 1);
-      this.layoutPctPiece.Controls.Add(this.pctJ, 4, 1);
-      this.layoutPctPiece.Controls.Add(this.pctL, 3, 1);
-      this.layoutPctPiece.Controls.Add(this.pctT, 2, 1);
-      this.layoutPctPiece.Controls.Add(this.pctLigne, 1, 1);
-      this.layoutPctPiece.Controls.Add(this.pctCarre, 0, 1);
-      this.layoutPctPiece.Controls.Add(this.lblPctCarre, 0, 0);
-      this.layoutPctPiece.Controls.Add(this.lblPctLigne, 1, 0);
-      this.layoutPctPiece.Controls.Add(this.lblPctT, 2, 0);
-      this.layoutPctPiece.Controls.Add(this.lblPctL, 3, 0);
-      this.layoutPctPiece.Controls.Add(this.lblPctJ, 4, 0);
-      this.layoutPctPiece.Controls.Add(this.lblPctS, 5, 0);
-      this.layoutPctPiece.Controls.Add(this.lblPctZ, 6, 0);
-      this.layoutPctPiece.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.layoutPctPiece.Location = new System.Drawing.Point(115, 275);
-      this.layoutPctPiece.Name = "layoutPctPiece";
-      this.layoutPctPiece.RowCount = 2;
-      this.layoutPctPiece.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.layoutPctPiece.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.layoutPctPiece.Size = new System.Drawing.Size(442, 131);
-      this.layoutPctPiece.TabIndex = 8;
-      // 
-      // pctZ
-      // 
-      this.pctZ.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.pctZ.AutoSize = true;
-      this.pctZ.Location = new System.Drawing.Point(400, 91);
-      this.pctZ.Name = "pctZ";
-      this.pctZ.Size = new System.Drawing.Size(13, 13);
-      this.pctZ.TabIndex = 14;
-      this.pctZ.Text = "0";
-      // 
-      // pctS
-      // 
-      this.pctS.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.pctS.AutoSize = true;
-      this.pctS.Location = new System.Drawing.Point(335, 91);
-      this.pctS.Name = "pctS";
-      this.pctS.Size = new System.Drawing.Size(13, 13);
-      this.pctS.TabIndex = 13;
-      this.pctS.Text = "0";
-      // 
-      // pctJ
-      // 
-      this.pctJ.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.pctJ.AutoSize = true;
-      this.pctJ.Location = new System.Drawing.Point(273, 91);
-      this.pctJ.Name = "pctJ";
-      this.pctJ.Size = new System.Drawing.Size(13, 13);
-      this.pctJ.TabIndex = 12;
-      this.pctJ.Text = "0";
-      // 
-      // pctL
-      // 
-      this.pctL.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.pctL.AutoSize = true;
-      this.pctL.Location = new System.Drawing.Point(211, 91);
-      this.pctL.Name = "pctL";
-      this.pctL.Size = new System.Drawing.Size(13, 13);
-      this.pctL.TabIndex = 11;
-      this.pctL.Text = "0";
-      // 
-      // pctT
-      // 
-      this.pctT.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.pctT.AutoSize = true;
-      this.pctT.Location = new System.Drawing.Point(149, 91);
-      this.pctT.Name = "pctT";
-      this.pctT.Size = new System.Drawing.Size(13, 13);
-      this.pctT.TabIndex = 10;
-      this.pctT.Text = "0";
-      // 
-      // pctLigne
-      // 
-      this.pctLigne.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.pctLigne.AutoSize = true;
-      this.pctLigne.Location = new System.Drawing.Point(87, 91);
-      this.pctLigne.Name = "pctLigne";
-      this.pctLigne.Size = new System.Drawing.Size(13, 13);
-      this.pctLigne.TabIndex = 9;
-      this.pctLigne.Text = "0";
-      // 
-      // pctCarre
-      // 
-      this.pctCarre.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.pctCarre.AutoSize = true;
-      this.pctCarre.Location = new System.Drawing.Point(25, 91);
-      this.pctCarre.Name = "pctCarre";
-      this.pctCarre.Size = new System.Drawing.Size(13, 13);
-      this.pctCarre.TabIndex = 8;
-      this.pctCarre.Text = "0";
-      // 
       // lblPctCarre
       // 
       this.lblPctCarre.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -503,16 +374,145 @@
       this.lblPctZ.TabIndex = 6;
       this.lblPctZ.Text = "Z";
       // 
-      // lblTemps
+      // nbCarre
       // 
-      this.lblTemps.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.lblTemps.AutoSize = true;
-      this.lblTemps.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblTemps.Location = new System.Drawing.Point(239, 31);
-      this.lblTemps.Name = "lblTemps";
-      this.lblTemps.Size = new System.Drawing.Size(194, 73);
-      this.lblTemps.TabIndex = 6;
-      this.lblTemps.Text = "00:00";
+      this.nbCarre.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.nbCarre.AutoSize = true;
+      this.nbCarre.Location = new System.Drawing.Point(25, 90);
+      this.nbCarre.Name = "nbCarre";
+      this.nbCarre.Size = new System.Drawing.Size(13, 13);
+      this.nbCarre.TabIndex = 7;
+      this.nbCarre.Text = "0";
+      // 
+      // nbLigne
+      // 
+      this.nbLigne.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.nbLigne.AutoSize = true;
+      this.nbLigne.Location = new System.Drawing.Point(87, 90);
+      this.nbLigne.Name = "nbLigne";
+      this.nbLigne.Size = new System.Drawing.Size(13, 13);
+      this.nbLigne.TabIndex = 8;
+      this.nbLigne.Text = "0";
+      // 
+      // nbT
+      // 
+      this.nbT.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.nbT.AutoSize = true;
+      this.nbT.Location = new System.Drawing.Point(149, 90);
+      this.nbT.Name = "nbT";
+      this.nbT.Size = new System.Drawing.Size(13, 13);
+      this.nbT.TabIndex = 9;
+      this.nbT.Text = "0";
+      // 
+      // nbL
+      // 
+      this.nbL.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.nbL.AutoSize = true;
+      this.nbL.Location = new System.Drawing.Point(211, 90);
+      this.nbL.Name = "nbL";
+      this.nbL.Size = new System.Drawing.Size(13, 13);
+      this.nbL.TabIndex = 10;
+      this.nbL.Text = "0";
+      // 
+      // nbJ
+      // 
+      this.nbJ.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.nbJ.AutoSize = true;
+      this.nbJ.Location = new System.Drawing.Point(273, 90);
+      this.nbJ.Name = "nbJ";
+      this.nbJ.Size = new System.Drawing.Size(13, 13);
+      this.nbJ.TabIndex = 11;
+      this.nbJ.Text = "0";
+      // 
+      // nbS
+      // 
+      this.nbS.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.nbS.AutoSize = true;
+      this.nbS.Location = new System.Drawing.Point(335, 90);
+      this.nbS.Name = "nbS";
+      this.nbS.Size = new System.Drawing.Size(13, 13);
+      this.nbS.TabIndex = 12;
+      this.nbS.Text = "0";
+      // 
+      // nbZ
+      // 
+      this.nbZ.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.nbZ.AutoSize = true;
+      this.nbZ.Location = new System.Drawing.Point(400, 90);
+      this.nbZ.Name = "nbZ";
+      this.nbZ.Size = new System.Drawing.Size(13, 13);
+      this.nbZ.TabIndex = 13;
+      this.nbZ.Text = "0";
+      // 
+      // pctCarre
+      // 
+      this.pctCarre.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.pctCarre.AutoSize = true;
+      this.pctCarre.Location = new System.Drawing.Point(25, 91);
+      this.pctCarre.Name = "pctCarre";
+      this.pctCarre.Size = new System.Drawing.Size(13, 13);
+      this.pctCarre.TabIndex = 8;
+      this.pctCarre.Text = "0";
+      // 
+      // pctLigne
+      // 
+      this.pctLigne.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.pctLigne.AutoSize = true;
+      this.pctLigne.Location = new System.Drawing.Point(87, 91);
+      this.pctLigne.Name = "pctLigne";
+      this.pctLigne.Size = new System.Drawing.Size(13, 13);
+      this.pctLigne.TabIndex = 9;
+      this.pctLigne.Text = "0";
+      // 
+      // pctT
+      // 
+      this.pctT.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.pctT.AutoSize = true;
+      this.pctT.Location = new System.Drawing.Point(149, 91);
+      this.pctT.Name = "pctT";
+      this.pctT.Size = new System.Drawing.Size(13, 13);
+      this.pctT.TabIndex = 10;
+      this.pctT.Text = "0";
+      // 
+      // pctL
+      // 
+      this.pctL.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.pctL.AutoSize = true;
+      this.pctL.Location = new System.Drawing.Point(211, 91);
+      this.pctL.Name = "pctL";
+      this.pctL.Size = new System.Drawing.Size(13, 13);
+      this.pctL.TabIndex = 11;
+      this.pctL.Text = "0";
+      // 
+      // pctJ
+      // 
+      this.pctJ.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.pctJ.AutoSize = true;
+      this.pctJ.Location = new System.Drawing.Point(273, 91);
+      this.pctJ.Name = "pctJ";
+      this.pctJ.Size = new System.Drawing.Size(13, 13);
+      this.pctJ.TabIndex = 12;
+      this.pctJ.Text = "0";
+      // 
+      // pctS
+      // 
+      this.pctS.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.pctS.AutoSize = true;
+      this.pctS.Location = new System.Drawing.Point(335, 91);
+      this.pctS.Name = "pctS";
+      this.pctS.Size = new System.Drawing.Size(13, 13);
+      this.pctS.TabIndex = 13;
+      this.pctS.Text = "0";
+      // 
+      // pctZ
+      // 
+      this.pctZ.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.pctZ.AutoSize = true;
+      this.pctZ.Location = new System.Drawing.Point(400, 91);
+      this.pctZ.Name = "pctZ";
+      this.pctZ.Size = new System.Drawing.Size(13, 13);
+      this.pctZ.TabIndex = 14;
+      this.pctZ.Text = "0";
       // 
       // frmFinPartie
       // 
