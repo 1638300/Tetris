@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * But de l'application :
+ * Il s'agit d'un jeu de tetris en fenêtre Windows Form.
+ * Cette page contient le code du fichier Options.cs, qui regroupe l'ensemble des fonctions liées au formulaire sur les options.
+ * Indiquez aussi qui est (sont) l' (les) auteur(s).
+ * Auteurs: Alek Savard et Yannick Gibeau
+ * */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,13 +37,13 @@ namespace TP3
     /// </summary>
     private void musique_CheckedChanged(object sender, EventArgs e)
     {
-      if (musique.Checked == true)
+      if (musique.Checked == true) //Si la case de la musique est cochée
       {
-        musiqueOptions = true;
+        musiqueOptions = true; //On active la musique
       }
       else
       {
-        musiqueOptions = false;
+        musiqueOptions = false; //Sinon on dsactive la musique
       }
     }
     /// <summary>
@@ -44,13 +51,13 @@ namespace TP3
     /// </summary>
     private void effetsSonores_CheckedChanged(object sender, EventArgs e)
     {
-      if (effetsSonores.Checked == true)
+      if (effetsSonores.Checked == true) //Si la case des effets est cochée
       {
-        effetsOptions = true;
+        effetsOptions = true; //On active les effets sonores
       }
       else
       {
-        effetsOptions = false;
+        effetsOptions = false; //Sinon on les désactives
       }
     }
   }

@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * But de l'application :
+ * Il s'agit d'un jeu de tetris en fenêtre Windows Form.
+ * Cette page contient le code du fichier frmFinPartie.cs, qui regroupe l'ensemble des fonctions liées au formulaire sur la fin de la partie.
+ * Indiquez aussi qui est (sont) l' (les) auteur(s).
+ * Auteurs: Alek Savard et Yannick Gibeau
+ * */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,23 +24,31 @@ namespace TP3
       InitializeComponent();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="temps">Temps de jeu total depuis le début d'une partie</param>
+    /// <param name="NbChaquePieces">Tableau qui contient le nombre de piece de chaque type jouées lors de la partie</param>
     public void SetStats(string temps, int[] NbChaquePieces)
     {
+      //Déclarer les variables des statistiques
       float[] pctChaquePieces = new float[NbChaquePieces.Length];
       int NbPiecesTotal = 0;
+
+      //Afficher le temps
       lblTemps.Text = temps;
 
-      for (int i = 0; i < NbChaquePieces.Length; i++)
+      for (int i = 0; i < NbChaquePieces.Length; i++) //Pour le nombre de piece différentes
       {
         pctChaquePieces[i] = 0.00f;
-        NbPiecesTotal = NbPiecesTotal + NbChaquePieces[i];
+        NbPiecesTotal = NbPiecesTotal + NbChaquePieces[i]; //Ajouter au nombre total de pièces en jeu
       }
 
-      for (int i = 0; i < pctChaquePieces.Length; i++)
+      for (int i = 0; i < pctChaquePieces.Length; i++) //Pour le nombre de pieces à calculer le pourcentage total
       {
-        if(NbChaquePieces[i] > 0)
+        if(NbChaquePieces[i] > 0) //Si le nombre de pièce est plus grand que 0
         {
-          pctChaquePieces[i] = ((float)NbChaquePieces[i] / NbPiecesTotal) * 100;
+          pctChaquePieces[i] = ((float)NbChaquePieces[i] / NbPiecesTotal) * 100; //Caluler son pourcentage de jeu
         }
       }
 
